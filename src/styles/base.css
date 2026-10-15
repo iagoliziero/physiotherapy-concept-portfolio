@@ -15,6 +15,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
+  font-size: var(--fs-base);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -27,6 +28,9 @@ h3 {
   color: var(--ink-strong);
   font-weight: 500;
   margin: 0;
+  line-height: 1.15;
+  /* Rede de segurança: uma palavra longa quebra em vez de estourar a tela */
+  overflow-wrap: break-word;
 }
 
 p {
@@ -100,7 +104,7 @@ section[id] {
 }
 
 .sec h2 {
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: var(--fs-h2);
 }
 
 .sec-title {
@@ -118,7 +122,7 @@ section[id] {
 .tag {
   display: block;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-xs);
   color: var(--tq);
   letter-spacing: 0.08em;
   margin-bottom: 10px;
@@ -145,7 +149,7 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: var(--fs-sm);
   padding: 6px 12px;
   border-radius: 20px;
   border: 1px solid rgba(45, 212, 191, 0.5);
@@ -160,7 +164,7 @@ section[id] {
   justify-content: center;
   gap: 8px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: var(--fs-sm);
   line-height: 1.4;
   padding: 13px 22px;
   border-radius: 12px;
@@ -175,7 +179,7 @@ section[id] {
 
 .btn--sm {
   padding: 9px 16px;
-  font-size: 14px;
+  font-size: var(--fs-sm);
 }
 
 .btn--block {
@@ -234,7 +238,8 @@ select {
   border-radius: 12px;
   padding: 12px 14px;
   font-family: var(--font-body);
-  font-size: 15px;
+  /* Mínimo de 16px: abaixo disso o iPhone dá zoom ao focar o campo */
+  font-size: var(--fs-base);
 }
 
 input::placeholder {

@@ -32,7 +32,7 @@
   gap: 6px;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 18px;
+  font-size: var(--fs-brand);
   color: var(--ink-strong);
   text-decoration: none;
 }
@@ -47,7 +47,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--mu);
 }
 
@@ -87,14 +87,15 @@
 }
 
 .hero h1 {
-  font-size: clamp(40px, 6vw, 78px);
+  font-size: var(--fs-h1);
   line-height: 1.05;
   margin: 20px 0 16px;
 }
 
 .hero__lead {
-  font-size: 18px;
-  max-width: 480px;
+  font-size: var(--fs-lead);
+  /* Largura de leitura confortável, acompanhando o tamanho da fonte */
+  max-width: 30em;
   margin: 0 0 28px;
 }
 
@@ -180,7 +181,7 @@
   display: inline-block;
   animation: marquee 26s linear infinite;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--fs-marquee);
   font-weight: 500;
 }
 
@@ -221,7 +222,7 @@
 }
 
 .specialty h3 {
-  font-size: 20px;
+  font-size: var(--fs-h4);
   margin: 14px 0 6px;
 }
 
@@ -249,7 +250,7 @@
 
 .chip {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: var(--fs-sm);
   padding: 7px 12px;
   border-radius: 20px;
   border: 1px solid var(--gb);
@@ -282,7 +283,7 @@
 }
 
 .pain__info h3 {
-  font-size: 24px;
+  font-size: var(--fs-h3);
   margin-bottom: 8px;
 }
 
@@ -339,7 +340,7 @@
 }
 
 .step h3 {
-  font-size: 21px;
+  font-size: var(--fs-h3);
 }
 
 .step p {
@@ -470,7 +471,7 @@
   position: absolute;
   inset: 0;
   padding: 20px;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   background: rgba(17, 26, 46, 0.92);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -492,7 +493,7 @@
 }
 
 .testimonial__role {
-  font-size: 13px;
+  font-size: var(--fs-xs);
 }
 
 .cylinder__controls {
@@ -589,13 +590,13 @@
 
 .field-error {
   color: var(--danger);
-  font-size: 13px;
+  font-size: var(--fs-xs);
   min-height: 18px;
   margin: 3px 0 8px;
 }
 
 .form-status {
-  font-size: 14px;
+  font-size: var(--fs-sm);
   color: var(--tq);
   margin-top: 12px;
   min-height: 20px;
@@ -620,14 +621,14 @@
   position: absolute;
   left: 18px;
   top: 14px;
-  font-size: 13px;
+  font-size: var(--fs-xs);
 }
 
 .contact__address {
   position: absolute;
   left: 18px;
   bottom: 16px;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-style: normal;
 }
 
@@ -667,7 +668,7 @@
 
 .footer {
   text-align: center;
-  font-size: 13px;
+  font-size: var(--fs-xs);
   color: var(--mu);
   padding: 28px 28px 100px;
   border-top: 1px solid var(--gb);
