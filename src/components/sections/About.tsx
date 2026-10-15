@@ -18,7 +18,7 @@ export function About() {
                 className="avatar-photo"
                 src={profilePhoto}
                 alt={`${site.name}, fisioterapeuta`}
-                sizes="210px"
+                sizes="(max-width: 860px) 240px, 360px"
                 placeholder="blur"
               />
             </div>

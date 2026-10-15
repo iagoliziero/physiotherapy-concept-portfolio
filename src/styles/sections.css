@@ -524,10 +524,11 @@
 
 /* Moldura conic-gradient girando */
 .avatar-frame {
-  width: 220px;
-  height: 220px;
+  /* 240px no celular, crescendo até 360px no desktop */
+  width: clamp(240px, 100px + 22vw, 360px);
+  height: clamp(240px, 100px + 22vw, 360px);
   border-radius: 50%;
-  padding: 5px;
+  padding: 6px;
   background: conic-gradient(var(--tq), var(--bl), transparent, var(--tq));
   animation: spin 6s linear infinite;
 }
