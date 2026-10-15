@@ -20,7 +20,7 @@ export default function OpenGraphImage() {
         color: "#F8FAFC",
       }}
     >
-      <div style={{ fontSize: 28, color: "#2DD4BF", letterSpacing: 2 }}>{"// FISIOTERAPIA ESPORTIVA E COLUNA"}</div>
+      <div style={{ fontSize: 28, color: "#2DD4BF", letterSpacing: 2 }}>{"// FISIOTERAPIA EM DOMICÍLIO"}</div>
       <div style={{ fontSize: 92, lineHeight: 1.05, marginTop: 24 }}>Movimento sem dor</div>
       <div
         style={{
@@ -34,7 +34,7 @@ export default function OpenGraphImage() {
         começa aqui
       </div>
       <div style={{ fontSize: 32, color: "#94A3B8", marginTop: 40 }}>
-        {`${site.name} · ${site.address.city}`}
+        {[site.name, site.address.city].filter(Boolean).join(" · ")}
       </div>
     </div>,
     size,

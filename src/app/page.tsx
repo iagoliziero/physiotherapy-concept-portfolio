@@ -9,8 +9,6 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Method } from "@/components/sections/Method";
 import { PainMap } from "@/components/sections/PainMap";
 import { Specialties } from "@/components/sections/Specialties";
-import { Stats } from "@/components/sections/Stats";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { site } from "@/config/site";
 
 /** Dados estruturados (schema.org) do tipo Physiotherapist. */
@@ -21,17 +19,27 @@ const jsonLd = {
   description: site.description,
   url: site.url,
   image: `${site.url}/opengraph-image`,
-  telephone: site.phone,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    addressLocality: site.address.city,
-    addressRegion: site.address.region,
-    addressCountry: site.address.country,
-  },
-  medicalSpecialty: ["Physiotherapy", "SportsMedicine"],
+  // Telefone e endereço só entram quando informados em src/config/site.ts
+  ...(site.phone ? { telephone: site.phone } : {}),
+  ...(site.address.city
+    ? {
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.address.street,
+          addressLocality: site.address.city,
+          addressRegion: site.address.region,
+          addressCountry: site.address.country,
+        },
+      }
+    : {}),
+  medicalSpecialty: ["Physiotherapy"],
 };
 
+/*
+ * As seções de números (Stats) e depoimentos (Testimonials) estão fora da
+ * página até haver dados reais. Para voltar, preencha `stats`/`testimonials`
+ * em src/data/content.ts e recoloque os componentes abaixo.
+ */
 export default function Home() {
   return (
     <>
@@ -43,12 +51,10 @@ export default function Home() {
       <main id="conteudo">
         <Hero />
         <Marquee />
-        <Stats />
         <Specialties />
         <PainMap />
         <Method />
         <BeforeAfter />
-        <Testimonials />
         <About />
         <Contact />
       </main>

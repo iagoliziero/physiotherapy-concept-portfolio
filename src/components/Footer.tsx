@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <>
       <footer className="footer">
-        © {new Date().getFullYear()} {site.name} · Fisioterapia · {site.crefito}
+        © {new Date().getFullYear()} {[site.name, "Fisioterapia", site.crefito].filter(Boolean).join(" · ")}
       </footer>
       <a
         className="whatsapp-fab mag"

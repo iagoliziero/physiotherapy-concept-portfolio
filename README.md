@@ -1,4 +1,4 @@
-# Dr. Rafael Moura — Landing page de fisioterapia
+# Luis Fernando — Landing page de fisioterapia em domicílio
 
 Landing page / portfólio em **Next.js 16 (App Router) + TypeScript**, convertida do protótipo
 estático em `referencia/index.html` seguindo a especificação de `referencia/prompt.md`.
@@ -57,7 +57,7 @@ Decisões principais:
 
 1. Ajuste os dados reais em `src/config/site.ts` (telefone, WhatsApp, CREFITO, endereço).
 2. Defina a variável de ambiente **`NEXT_PUBLIC_SITE_URL`** com o domínio final
-   (ex.: `https://rafaelmoura.com.br`). Ela gera as URLs absolutas de Open Graph,
+   (ex.: `https://seudominio.com.br`). Ela gera as URLs absolutas de Open Graph,
    canonical, sitemap e JSON-LD.
 3. O formulário só valida e confirma na tela. Para receber os pedidos, integre o
    `onSubmit` de `src/components/ContactForm.tsx` com Formspree, EmailJS ou uma rota de API.

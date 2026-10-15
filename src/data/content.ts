@@ -4,13 +4,13 @@
  */
 
 export const marqueeItems = [
-  "COLUNA",
-  "JOELHO",
-  "OMBRO",
-  "PÓS-OPERATÓRIO",
-  "PILATES CLÍNICO",
-  "LESÕES ESPORTIVAS",
-  "POSTURA",
+  "ATENDIMENTO EM CASA",
+  "DOR DE CABEÇA TENSIONAL",
+  "DTM",
+  "CERVICAL",
+  "LOMBAR",
+  "RECUPERAÇÃO MUSCULAR",
+  "MOBILIDADE",
 ] as const;
 
 export interface Stat {
@@ -23,11 +23,8 @@ export interface Stat {
   label: string;
 }
 
-export const stats: Stat[] = [
-  { value: 12, suffix: "+", progress: 0.85, color: "#2DD4BF", label: "anos de experiência" },
-  { value: 3200, progress: 0.92, color: "#38BDF8", label: "pacientes atendidos" },
-  { value: 98, suffix: "%", progress: 0.98, color: "#2DD4BF", label: "de satisfação" },
-];
+// Sem números reais ainda: a seção fica fora da página (ver src/app/page.tsx)
+export const stats: Stat[] = [];
 
 export type SpecialtyIcon = "bone" | "run" | "heartbeat" | "yoga";
 
@@ -39,10 +36,20 @@ export interface Specialty {
 }
 
 export const specialties: Specialty[] = [
-  { icon: "bone", color: "var(--tq)", title: "Coluna", text: "Hérnia de disco, lombalgia e correção postural." },
-  { icon: "run", color: "var(--bl)", title: "Esportiva", text: "Joelho, tornozelo e retorno ao esporte." },
-  { icon: "heartbeat", color: "var(--tq)", title: "Pós-operatório", text: "Recuperação segura de cirurgias ortopédicas." },
-  { icon: "yoga", color: "var(--bl)", title: "Pilates clínico", text: "Fortalecimento, mobilidade e prevenção." },
+  {
+    icon: "heartbeat",
+    color: "var(--tq)",
+    title: "Cervical e DTM",
+    text: "Dor de cabeça tensional, tensão no pescoço e dor na mandíbula.",
+  },
+  { icon: "bone", color: "var(--bl)", title: "Coluna e lombar", text: "Alívio da dor nas costas e orientação de postura." },
+  {
+    icon: "run",
+    color: "var(--tq)",
+    title: "Recuperação muscular",
+    text: "Para quem treina: menos dor e recuperação entre os treinos.",
+  },
+  { icon: "yoga", color: "var(--bl)", title: "Mobilidade", text: "Mais amplitude de movimento para treinar e para o dia a dia." },
 ];
 
 /** Opções do formulário de agendamento (derivadas das especialidades). */
@@ -63,45 +70,48 @@ export const hotspots: Hotspot[] = [
   {
     key: "cervical",
     label: "Cervical",
-    title: "Dor no pescoço e tensão",
-    text: "Liberação miofascial, mobilização cervical e ergonomia para quem passa horas no computador.",
+    title: "Dor de cabeça tensional e DTM",
+    text: "Tensão no pescoço que vira dor de cabeça e dor na mandíbula (DTM), tratadas na sua casa.",
     position: [0, 2.15, -0.12],
   },
   {
     key: "ombro",
     label: "Ombro",
-    title: "Tendinite e lesão do manguito",
-    text: "Fortalecimento progressivo, terapia manual e retorno seguro a treinos de força e natação.",
+    title: "Dor e tensão no ombro",
+    text: "Alívio da dor e recuperação do movimento do ombro.",
     position: [0.62, 1.92, 0],
   },
   {
     key: "lombar",
     label: "Lombar",
-    title: "Dor lombar e hérnia de disco",
-    text: "Terapia manual, estabilização do core e reeducação postural para aliviar e prevenir crises.",
+    title: "Dor lombar",
+    text: "Alívio da dor nas costas, com orientações de postura e movimento para o dia a dia.",
     position: [0, 0.75, -0.42],
   },
   {
     key: "joelho",
     label: "Joelho",
-    title: "Lesões de LCA e menisco",
-    text: "Reabilitação pós-operatória e conservadora com protocolo baseado em critérios de retorno ao esporte.",
+    title: "Recuperação muscular e mobilidade",
+    text: "Para quem treina: recuperação muscular e ganho de mobilidade no joelho, para voltar ao treino com mais conforto.",
     position: [0.22, -1.02, 0.16],
   },
   {
     key: "tornozelo",
     label: "Tornozelo",
-    title: "Entorses e instabilidade",
-    text: "Treino proprioceptivo, fortalecimento e prevenção de novas entorses.",
+    title: "Mobilidade para quem treina",
+    text: "Recuperação muscular da panturrilha e mobilidade do tornozelo, para treinar com mais liberdade.",
     position: [-0.22, -2.08, 0.12],
   },
 ];
 
 export const methodSteps = [
-  { title: "1. Avaliação", text: "Testes de força, mobilidade e análise do movimento." },
-  { title: "2. Diagnóstico funcional", text: "Identificamos a causa da dor, não apenas o sintoma." },
-  { title: "3. Tratamento", text: "Terapia manual, exercícios e tecnologia com metas mensuráveis." },
-  { title: "4. Alta e prevenção", text: "Plano de manutenção para a dor não voltar." },
+  { title: "1. Contato pelo WhatsApp", text: "Você chama no WhatsApp, conta o que está sentindo e combina o horário." },
+  { title: "2. Avaliação da queixa", text: "Entender a origem da dor e o quanto ela atrapalha sua rotina e seus treinos." },
+  {
+    title: "3. Sessão em casa",
+    text: "O atendimento acontece na sua casa, sem você precisar se deslocar.",
+  },
+  { title: "4. Orientações e prevenção", text: "Orientações para o dia a dia e para os treinos, para a dor não voltar." },
 ];
 
 export interface Testimonial {
@@ -110,22 +120,10 @@ export interface Testimonial {
   quote: string;
 }
 
-export const testimonials: Testimonial[] = [
-  { name: "Marina S.", role: "Corredora", quote: "Voltei a correr meia maratona sem dor no joelho em 3 meses." },
-  { name: "Carlos T.", role: "Analista", quote: "A dor lombar de 5 anos sumiu. Mudou minha rotina." },
-  { name: "Juliana P.", role: "Pós-cirurgia LCA", quote: "Recuperação impecável, me senti segura em cada etapa." },
-  { name: "Pedro A.", role: "Jogador de futebol", quote: "Retornei aos treinos antes do previsto e mais forte." },
-  { name: "Ana L.", role: "Professora", quote: "O pilates clínico corrigiu minha postura de vez." },
-  { name: "Roberto M.", role: "Ciclista", quote: "Atendimento técnico e humano. Recomendo demais." },
-];
+// Só depoimentos reais, com autorização. Sem eles, a seção fica fora da página (ver src/app/page.tsx)
+export const testimonials: Testimonial[] = [];
 
-export const certifications = [
-  "CREFITO-3",
-  "Mestrado USP",
-  "Terapia manual",
-  "Pilates clínico",
-  "Dry needling",
-];
+export const certifications = ["Atendimento em domicílio"];
 
 /** Capitais conectadas a São Paulo no globo do contato: [latitude, longitude]. */
 export const globeDestinations: [number, number][] = [
@@ -138,4 +136,5 @@ export const globeDestinations: [number, number][] = [
   [-3.7, -38.5], // Fortaleza
 ];
 
+// Cidade de atendimento ainda não informada: o pin do globo continua em São Paulo
 export const globeOrigin: [number, number] = [-23.55, -46.63]; // São Paulo

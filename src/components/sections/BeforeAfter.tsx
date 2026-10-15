@@ -60,7 +60,7 @@ export function BeforeAfter() {
       <h2 id="resultados-title" className="sec-title--tight">
         <SplitWords text="Antes e depois" />
       </h2>
-      <p className="sec-lead fade muted">Arraste para comparar a postura no início e após 12 semanas.</p>
+      <p className="sec-lead fade muted">Arraste para comparar a postura antes e depois do tratamento (ilustração).</p>
 
       <div className="compare glass fade">
         <div className="compare__pane compare__pane--after">{afterIllustration}</div>

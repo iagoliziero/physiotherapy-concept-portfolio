@@ -3,23 +3,25 @@
  * rodapé, botão de WhatsApp e formulário.
  */
 export const site = {
-  name: "Dr. Rafael Moura",
-  brand: "Rafael Moura",
-  title: "Dr. Rafael Moura | Fisioterapia Esportiva e Coluna em São Paulo",
+  name: "Luis Fernando",
+  brand: "Luis Fernando",
+  title: "Luis Fernando | Fisioterapia em domicílio",
   description:
-    "Fisioterapia esportiva e reabilitação de coluna em São Paulo. Tratamento baseado em evidência para lombalgia, hérnia de disco, lesões esportivas e pós-operatório.",
-  ogTitle: "Dr. Rafael Moura | Fisioterapia",
-  ogDescription: "Movimento sem dor começa aqui. Agende sua avaliação.",
+    "Fisioterapia em domicílio. Alívio de dor de cabeça tensional, DTM e dores no corpo, com recuperação muscular e mobilidade para quem treina.",
+  ogTitle: "Luis Fernando | Fisioterapia em domicílio",
+  ogDescription: "Movimento sem dor começa aqui. Agende sua sessão em casa pelo WhatsApp.",
   /** Defina NEXT_PUBLIC_SITE_URL no deploy para gerar URLs absolutas corretas. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  phone: "+55-11-99999-0000",
-  whatsapp: "5511999990000",
-  crefito: "CREFITO-3 000000-F",
-  clinic: "Clínica Movimento",
+  // Ainda não informados. Campos vazios ficam ocultos no site.
+  // WhatsApp: só dígitos, com DDI 55 (ex.: 5511999999999)
+  phone: "",
+  whatsapp: "",
+  crefito: "",
+  clinic: "Atendimento em domicílio",
   address: {
-    street: "Av. Paulista, 1000",
-    city: "São Paulo",
-    region: "SP",
+    street: "",
+    city: "",
+    region: "",
     country: "BR",
   },
   themeColor: "#0B1220",

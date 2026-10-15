@@ -2,7 +2,7 @@
   "name": "physiotherapy-concept-lp",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing page / portfólio do fisioterapeuta Dr. Rafael Moura — Next.js (App Router) + TypeScript + Three.js",
+  "description": "Landing page do fisioterapeuta Luis Fernando (atendimento em domicílio) — Next.js (App Router) + TypeScript + Three.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -16,7 +16,7 @@ export function Hero() {
       <div className="hero__inner">
         <div className="hero__copy">
           <span className="badge">
-            <IconSparkles size={16} aria-hidden="true" /> Fisioterapia esportiva e coluna
+            <IconSparkles size={16} aria-hidden="true" /> Fisioterapia em domicílio
           </span>
           <h1 id="hero-title">
             <SplitWords text="Movimento sem dor" />
@@ -24,7 +24,7 @@ export function Hero() {
             <span className="shine">começa aqui</span>
           </h1>
           <p className="hero__lead fade muted">
-            Reabilitação baseada em evidência para você voltar a treinar, trabalhar e viver sem limitações.
+            Fisioterapia no conforto da sua casa, para você voltar a treinar, trabalhar e viver sem dor.
           </p>
           <div className="hero__ctas fade">
             <a className="btn btn-primary mag" href="#contato">

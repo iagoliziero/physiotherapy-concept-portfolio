@@ -5,6 +5,8 @@ import { site } from "@/config/site";
 
 /** Contato: formulário com validação inline + globo 3D com rotas de pacientes. */
 export function Contact() {
+  // Região e cidade aparecem só quando informadas
+  const location = [site.address.street, site.address.city].filter(Boolean).join(" · ");
   return (
     <section className="sec" id="contato" aria-labelledby="contato-title">
       <span className="tag scr">{"// AGENDAMENTO"}</span>
@@ -17,15 +19,17 @@ export function Contact() {
           <SceneMount
             scene="globe"
             className="contact__globe-scene"
-            label="Globo 3D com rotas de pacientes de várias capitais até São Paulo"
+            label="Globo 3D decorativo com a cidade de atendimento em destaque"
           />
-          <p className="contact__globe-caption muted">Pacientes de todo o Brasil</p>
+          <p className="contact__globe-caption muted">A fisioterapia vai até você</p>
           <address className="contact__address">
             <strong>{site.clinic}</strong>
-            <br />
-            <span className="muted">
-              {site.address.street} · {site.address.city}
-            </span>
+            {location ? (
+              <>
+                <br />
+                <span className="muted">{location}</span>
+              </>
+            ) : null}
           </address>
         </div>
       </div>
