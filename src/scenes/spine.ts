@@ -44,13 +44,12 @@ interface OrbitRing {
 /**
  * Cena do hero: coluna vertebral estilizada em S, anéis orbitais com
  * esferas, hélice dupla de partículas e icosaedros flutuantes.
- * Quando o hero sai da tela as vértebras se afastam e giram ("explosão").
+ * Quando a cena sai pelo topo da tela as vértebras se afastam e giram ("explosão").
  */
 export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   const stage = createStage(el, env, BASE_Z);
   const { scene, camera } = stage;
   const motion = env.reducedMotion ? 0 : 1;
-  const hero = el.closest<HTMLElement>("section") ?? el;
 
   // ----- Coluna: vértebras = cilindro + wireframe + processos + disco -----
   const spine = new Group();
@@ -62,6 +61,9 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   const discMat = standardMaterial(0xe1f5ee);
 
   const count = env.lowPower ? 10 : 16;
+  // Com menos vértebras (celular), cada uma fica mais alta para a coluna continuar
+  // encostada na mesma altura; com 16, o fator é 1 e nada muda
+  const stretch = 15 / (count - 1);
   const segments = env.lowPower ? 12 : 28;
   const vertebrae: Vertebra[] = [];
 
@@ -73,25 +75,25 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
     const group = new Group();
     group.position.set(x, y, 0);
 
-    group.add(new Mesh(new CylinderGeometry(0.5 * s, 0.5 * s, 0.26, segments), bodyMat));
-    group.add(edges(new CylinderGeometry(0.58 * s, 0.58 * s, 0.3, 10), 0x38bdf8, 0.6));
+    group.add(new Mesh(new CylinderGeometry(0.5 * s, 0.5 * s, 0.26 * stretch, segments), bodyMat));
+    group.add(edges(new CylinderGeometry(0.58 * s, 0.58 * s, 0.3 * stretch, 10), 0x38bdf8, 0.6));
 
     // Processo espinhoso (para trás)
-    const spinous = new Mesh(new BoxGeometry(0.22, 0.16, 0.55 * s), spinousMat);
+    const spinous = new Mesh(new BoxGeometry(0.22, 0.16 * stretch, 0.55 * s), spinousMat);
     spinous.position.z = -0.55 * s;
     group.add(spinous);
 
     // Processos transversos (laterais)
     for (const side of [-1, 1]) {
-      const transverse = new Mesh(new BoxGeometry(0.5 * s, 0.1, 0.12), transverseMat);
+      const transverse = new Mesh(new BoxGeometry(0.5 * s, 0.1 * stretch, 0.12), transverseMat);
       transverse.position.set(side * 0.55 * s, 0, -0.25 * s);
       group.add(transverse);
     }
 
     // Disco intervertebral claro
     if (i < count - 1) {
-      const disc = new Mesh(new CylinderGeometry(0.36 * s, 0.36 * s, 0.13, 20), discMat);
-      disc.position.y = -0.21;
+      const disc = new Mesh(new CylinderGeometry(0.36 * s, 0.36 * s, 0.13 * stretch, 20), discMat);
+      disc.position.y = -0.21 * stretch;
       group.add(disc);
     }
 
@@ -153,15 +155,18 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   };
   window.addEventListener("mousemove", onMouse, { passive: true });
 
-  // ----- Explosão guiada pela fração visível do hero -----
-  let heroRatio = 1;
-  const heroObserver = new IntersectionObserver(
-    ([entry]) => {
-      heroRatio = entry.intersectionRatio;
-    },
-    { threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
-  );
-  heroObserver.observe(hero);
+  // ----- Explosão: a coluna se separa conforme a própria cena sai pelo topo da tela -----
+  // (Pela fração visível do hero inteiro, no celular ela já se separava ao rolar até a cena,
+  // que fica abaixo do texto.)
+  let exitTarget = 0;
+  let exitAmount = 0;
+  const measureExit = () => {
+    const box = el.getBoundingClientRect();
+    exitTarget = box.height > 0 ? Math.min(1, Math.max(0, -box.top / box.height)) : 0;
+  };
+  measureExit();
+  window.addEventListener("scroll", measureExit, { passive: true });
+  window.addEventListener("resize", measureExit);
 
   stage.start((time, delta) => {
     const step = delta * 60 * motion;
@@ -172,7 +177,8 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
     spine.position.x += (mouseX * 0.9 - spine.position.x) * ease;
 
     // Movimento reduzido: sem explosão ligada ao scroll
-    const explode = env.reducedMotion ? 0 : (1 - heroRatio) * 0.9;
+    exitAmount += (exitTarget - exitAmount) * damp(0.15, delta);
+    const explode = env.reducedMotion ? 0 : exitAmount * 0.9;
     vertebrae.forEach((v, i) => {
       v.group.position.y = v.baseY * (1 + explode * 0.6) + Math.sin(time * 1.5 + i * 0.5) * 0.03 * motion;
       v.group.position.x = v.baseX + Math.sin(v.phase) * explode * 0.8;
@@ -203,7 +209,8 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   return {
     dispose() {
       window.removeEventListener("mousemove", onMouse);
-      heroObserver.disconnect();
+      window.removeEventListener("scroll", measureExit);
+      window.removeEventListener("resize", measureExit);
       stage.dispose();
     },
   };
