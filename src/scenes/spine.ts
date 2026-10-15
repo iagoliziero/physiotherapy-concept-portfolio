@@ -17,6 +17,15 @@ import {
 import type { DeviceEnv } from "@/lib/env";
 import { createStage, damp, edges, type SceneHandle, standardMaterial } from "./stage";
 
+/** Distância padrão da câmera (telas largas). */
+const BASE_Z = 10;
+/**
+ * Raio horizontal que precisa caber no quadro: anel maior (3,4) + esfera
+ * orbital + folga do parallax da câmera. Em canvas estreitos a câmera se
+ * afasta o necessário para os anéis não serem cortados nas laterais.
+ */
+const FIT_RADIUS = 3.8;
+
 interface Vertebra {
   group: Group;
   baseY: number;
@@ -38,7 +47,7 @@ interface OrbitRing {
  * Quando o hero sai da tela as vértebras se afastam e giram ("explosão").
  */
 export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
-  const stage = createStage(el, env, 10);
+  const stage = createStage(el, env, BASE_Z);
   const { scene, camera } = stage;
   const motion = env.reducedMotion ? 0 : 1;
   const hero = el.closest<HTMLElement>("section") ?? el;
@@ -184,6 +193,9 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
       f.position.y += Math.sin(time + i) * 0.002 * step;
     });
 
+    // Enquadramento pela proporção atual do canvas (muda no resize)
+    const halfHeight = Math.tan((camera.fov * Math.PI) / 360);
+    camera.position.z = Math.max(BASE_Z, FIT_RADIUS / (halfHeight * camera.aspect));
     camera.position.x += (mouseX * 1.2 - camera.position.x) * damp(0.04, delta);
     camera.lookAt(0, 0, 0);
   });
