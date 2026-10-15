@@ -2,6 +2,7 @@
 
 import { IconArrowsHorizontal } from "@tabler/icons-react";
 import { useState } from "react";
+import { ScheduleCta } from "@/components/ScheduleCta";
 import { SplitWords } from "@/components/SplitWords";
 
 /*
@@ -84,6 +85,7 @@ export function BeforeAfter() {
           aria-valuetext={`${value}% mostrando o antes`}
         />
       </div>
+      <ScheduleCta />
     </section>
   );
 }

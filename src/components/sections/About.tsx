@@ -1,5 +1,6 @@
 import Image from "next/image";
 import profilePhoto from "@/assets/luis-fernando.jpg";
+import { ScheduleCta } from "@/components/ScheduleCta";
 import { SplitWords } from "@/components/SplitWords";
 import { site } from "@/config/site";
 import { certifications } from "@/data/content";
@@ -39,6 +40,7 @@ export function About() {
               </li>
             ))}
           </ul>
+          <ScheduleCta />
         </div>
       </div>
     </section>

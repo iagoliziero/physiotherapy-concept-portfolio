@@ -1,4 +1,5 @@
 import { IconBone, IconHeartbeat, IconRun, IconYoga } from "@tabler/icons-react";
+import { ScheduleCta } from "@/components/ScheduleCta";
 import { SplitWords } from "@/components/SplitWords";
 import { type SpecialtyIcon, specialties } from "@/data/content";
 
@@ -32,6 +33,7 @@ export function Specialties() {
           );
         })}
       </div>
+      <ScheduleCta />
     </section>
   );
 }

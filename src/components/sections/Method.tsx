@@ -1,3 +1,4 @@
+import { ScheduleCta } from "@/components/ScheduleCta";
 import { SplitWords } from "@/components/SplitWords";
 import { methodSteps } from "@/data/content";
 
@@ -24,6 +25,7 @@ export function Method() {
           ))}
         </ol>
       </div>
+      <ScheduleCta />
     </section>
   );
 }
