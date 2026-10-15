@@ -5,8 +5,8 @@ import { methodSteps } from "@/data/content";
 export function Method() {
   return (
     <section className="sec" id="metodo" aria-labelledby="metodo-title">
-      <h2 id="metodo-title" className="sec-title">
-        Como funciona
+      <h2 id="metodo-title" className="sec-title reveal-mask">
+        <span>Como funciona</span>
       </h2>
       <div className="timeline" data-timeline="">
         <div className="timeline__track" aria-hidden="true" />

@@ -13,16 +13,51 @@
   filter: none;
 }
 
-/* ===== Fade ao entrar na tela ===== */
-.fade {
+/* ===== Reveal ao rolar ===== */
+/*
+ * Sobe e aparece na primeira vez em que entra na tela. Anima `translate`
+ * (e não `transform`) para não brigar com o tilt dos cards. O atraso --d
+ * monta a cascata de quem entra junto (ver effects/reveal.ts).
+ */
+.reveal {
+  --reveal-transition:
+    opacity 0.9s var(--ease-reveal) var(--d, 0s),
+    translate 0.9s var(--ease-reveal) var(--d, 0s);
   opacity: 0;
-  transform: translateY(28px);
-  transition: all 0.9s var(--ease-out);
+  translate: 0 32px;
+  transition: var(--reveal-transition);
 }
 
-.fade.is-in {
+.reveal.is-in {
   opacity: 1;
-  transform: none;
+  translate: none;
+}
+
+/* Cards já têm transição própria (tilt e borda): soma as duas */
+.card.reveal {
+  transition:
+    transform 0.15s ease-out,
+    border-color 0.3s,
+    var(--reveal-transition);
+}
+
+/*
+ * Títulos: o texto sobe de trás de uma linha invisível na base do título.
+ * O recorte é fixo e só o <span> interno se move. As margens negativas
+ * deixam acentos e cedilhas inteiros.
+ */
+.reveal-mask {
+  clip-path: inset(-0.3em -0.1em -0.15em -0.1em);
+}
+
+.reveal-mask > span {
+  display: block;
+  translate: 0 calc(100% + 0.5em);
+  transition: translate 1s var(--ease-reveal) var(--d, 0s);
+}
+
+.reveal-mask.is-in > span {
+  translate: none;
 }
 
 /* ===== Gradiente animado fluindo no texto (fim do título do hero) ===== */
@@ -164,10 +199,15 @@ html.has-custom-cursor * {
   }
 
   .word,
-  .fade,
+  .reveal,
   .step {
     opacity: 1;
     transform: none;
+    translate: none;
     filter: none;
+  }
+
+  .reveal-mask > span {
+    translate: none;
   }
 }

@@ -13,14 +13,14 @@ const icons: Record<SpecialtyIcon, typeof IconBone> = {
 export function Specialties() {
   return (
     <section className="sec" id="especialidades" aria-labelledby="especialidades-title">
-      <h2 id="especialidades-title" className="sec-title">
-        O que eu trato
+      <h2 id="especialidades-title" className="sec-title reveal-mask">
+        <span>O que eu trato</span>
       </h2>
       <div className="grid specialties__grid">
         {specialties.map((item) => {
           const Icon = icons[item.icon];
           return (
-            <article key={item.title} className="glass card specialty">
+            <article key={item.title} className="glass card specialty reveal">
               {/* Anima o wrapper, não o <svg>: transform em SVG não é acelerado por GPU */}
               <span className="card-icon" style={{ color: item.color }}>
                 <Icon size={32} aria-hidden="true" />

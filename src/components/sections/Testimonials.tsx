@@ -37,8 +37,8 @@ export function Testimonials() {
 
   return (
     <section className="sec" aria-labelledby="depoimentos-title">
-      <h2 id="depoimentos-title" className="sec-title">
-        Quem já voltou a se mover
+      <h2 id="depoimentos-title" className="sec-title reveal-mask">
+        <span>Quem já voltou a se mover</span>
       </h2>
 
       <div

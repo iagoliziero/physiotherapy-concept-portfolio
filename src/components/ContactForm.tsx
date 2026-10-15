@@ -59,7 +59,7 @@ export function ContactForm() {
   const message = `Olá, Luis! Sou ${values.name.trim()} e quero agendar uma avaliação (${values.treatment}). Meu WhatsApp é ${values.phone.trim()}.`;
 
   return (
-    <form className="glass contact__form" noValidate onSubmit={onSubmit} aria-label="Agendamento">
+    <form className="glass contact__form reveal" noValidate onSubmit={onSubmit} aria-label="Agendamento">
       <label className="sr-only" htmlFor="contato-name">
         Nome
       </label>

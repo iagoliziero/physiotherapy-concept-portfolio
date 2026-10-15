@@ -35,7 +35,8 @@ src/
   components/     Navbar, Footer, GlobalEffects, SceneMount, ContactForm…
     sections/     Hero, Marquee, Stats, Specialties, PainMap, Method, BeforeAfter, Testimonials, About, Contact
   scenes/         stage.ts (renderer, luzes, visibilidade, resize), spine.ts, body.ts, globe.ts
-  effects/        cursor, ripple, magnetic, tilt, reveal, counter, timeline, particles, smoothScroll
+  effects/        cursor, ripple, magnetic, tilt, reveal, counter, timeline, particles, smoothScroll,
+                  marquee, heroParallax, scrollProgress
   lib/            loop.ts (requestAnimationFrame único), env.ts (reduced motion / mobile / ponteiro)
   data/           content.ts — todos os textos editáveis
   config/         site.ts — nome, telefone, WhatsApp, endereço, URL
@@ -44,14 +45,20 @@ src/
 
 Decisões principais:
 
-- **Um único loop de animação** (`lib/loop.ts`): Lenis, cursor, partículas, carrossel e as
+- **Um único loop de animação** (`lib/loop.ts`): Lenis, cursor, partículas, faixa, carrossel e as
   três cenas 3D se inscrevem nele. Cada cena só renderiza quando está visível
   (IntersectionObserver) e se ajusta ao tamanho do contêiner (ResizeObserver).
+- **Efeitos de rolagem** só com `transform`/`translate`/`opacity` (nada que refaça o layout):
+  blocos `.reveal` sobem ao entrar na tela, em cascata quando entram juntos; títulos
+  `.reveal-mask` sobem de trás de uma máscara; a faixa acelera no sentido da rolagem; o texto
+  do hero fica para trás e esmaece (só desktop); e uma linha na navbar mostra o progresso.
 - **HTML no servidor, efeitos no cliente:** as seções são Server Components; os efeitos
-  globais atuam sobre classes/atributos (`.fade`, `.mag`, `.card`, `data-split`, `data-count`…).
+  globais atuam sobre classes/atributos (`.reveal`, `.mag`, `.card`, `data-split`, `data-count`…).
 - **Mobile/touch:** menos partículas e vértebras, `pixelRatio` 1, sem antialias e cursor nativo.
-- **`prefers-reduced-motion`:** desliga animações contínuas, Lenis, cursor e explosão da
-  coluna, e mostra todo o conteúdo.
+- **`prefers-reduced-motion`:** desliga animações contínuas, Lenis, cursor, explosão da
+  coluna, faixa e parallax do hero, e mostra todo o conteúdo. No Windows, essa preferência
+  vem de *Configurações → Acessibilidade → Efeitos visuais → Efeitos de animação*: com ela
+  desligada, o navegador pede movimento reduzido e o site aparece sem animações.
 - **Sem JavaScript**, o conteúdo continua visível (fallback em `<noscript>`).
 
 ## Antes de publicar

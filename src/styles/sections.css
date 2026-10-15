@@ -61,6 +61,27 @@
   color: var(--tq);
 }
 
+/* Progresso da leitura: linha em degradê sobre a borda inferior da navbar */
+.nav__progress {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--tq), var(--bl));
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.5);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.nav.is-scrolled .nav__progress {
+  opacity: 1;
+}
+
 /* ===== 2. Hero ===== */
 .hero {
   position: relative;
@@ -178,19 +199,14 @@
   margin: 20px 0;
 }
 
+/* Movida pelo loop único, que acelera a faixa com a rolagem (effects/marquee.ts) */
 .marquee__track {
   display: inline-block;
-  animation: marquee 26s linear infinite;
+  will-change: transform;
   font-family: var(--font-display);
   font-size: var(--fs-marquee);
   font-weight: 800;
   letter-spacing: 0.02em;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* ===== 4. Números ===== */

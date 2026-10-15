@@ -8,12 +8,12 @@ export function Contact() {
   const location = [site.address.street, site.address.city].filter(Boolean).join(" · ");
   return (
     <section className="sec" id="contato" aria-labelledby="contato-title">
-      <h2 id="contato-title" className="sec-title">
-        Agende sua avaliação
+      <h2 id="contato-title" className="sec-title reveal-mask">
+        <span>Agende sua avaliação</span>
       </h2>
       <div className="grid contact__grid">
         <ContactForm />
-        <div className="glass contact__globe">
+        <div className="glass contact__globe reveal">
           <SceneMount
             scene="globe"
             className="contact__globe-scene"

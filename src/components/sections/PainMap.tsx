@@ -70,19 +70,19 @@ export function PainMap() {
 
   return (
     <section className="sec" id="onde-doi" aria-labelledby="onde-doi-title">
-      <h2 id="onde-doi-title" className="sec-title--tight">
-        Onde dói?
+      <h2 id="onde-doi-title" className="sec-title--tight reveal-mask">
+        <span>Onde dói?</span>
       </h2>
-      <p className="sec-lead muted">Arraste para girar o corpo e toque no ponto que dói.</p>
+      <p className="sec-lead muted reveal">Arraste para girar o corpo e toque no ponto que dói.</p>
 
       <div className="grid pain__grid">
         <div
           ref={sceneEl}
-          className="glass scene pain__scene"
+          className="glass scene pain__scene reveal"
           role="img"
           aria-label="Corpo humano 3D interativo. Use os botões de região ao lado para selecionar pelo teclado."
         />
-        <div>
+        <div className="reveal">
           <div className="chips" role="group" aria-label="Regiões do corpo">
             {hotspots.map((h) => (
               <button

@@ -56,15 +56,15 @@ export function BeforeAfter() {
 
   return (
     <section className="sec" aria-labelledby="resultados-title">
-      <h2 id="resultados-title" className="sec-title--tight">
-        Postura que pesa no pescoço
+      <h2 id="resultados-title" className="sec-title--tight reveal-mask">
+        <span>Postura que pesa no pescoço</span>
       </h2>
-      <p className="sec-lead muted">
+      <p className="sec-lead muted reveal">
         Com a cabeça projetada para a frente, o pescoço trabalha sobrecarregado. Essa postura pode contribuir para
         a dor de cabeça tensional. Arraste para comparar.
       </p>
 
-      <div className="compare glass">
+      <div className="compare glass reveal">
         <div className="compare__pane compare__pane--after">{afterIllustration}</div>
 
         {/* "Antes" fica por cima, recortado pelo slider */}

@@ -52,7 +52,8 @@ export const viewport: Viewport = {
 
 /** Sem JavaScript: mostra o conteúdo que normalmente entra com animação. */
 const noScriptStyles = `
-.word,.fade,.step{opacity:1!important;transform:none!important;filter:none!important}
+.word,.reveal,.step{opacity:1!important;transform:none!important;translate:none!important;filter:none!important}
+.reveal-mask>span{translate:none!important}
 [data-progress]{stroke-dashoffset:var(--done)!important}
 `;
 

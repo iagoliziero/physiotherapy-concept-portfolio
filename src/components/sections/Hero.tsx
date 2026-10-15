@@ -13,18 +13,18 @@ export function Hero() {
       <HeroParticles />
 
       <div className="hero__inner">
-        <div className="hero__copy">
+        <div className="hero__copy" data-hero-copy="">
           {/* Quebras fixas: o título mantém as mesmas três linhas em qualquer tela */}
           <h1 id="hero-title">
             <SplitWords text={"Fisioterapia\nque vai até"} />
             <br />
             <span className="shine">a sua casa</span>
           </h1>
-          <p className="hero__lead fade muted">
+          <p className="hero__lead reveal muted">
             Trato dor de cabeça tensional, DTM e dores no pescoço e nas costas, e cuido da recuperação de quem
             treina. Você agenda pelo WhatsApp e eu vou até você.
           </p>
-          <div className="hero__ctas fade">
+          <div className="hero__ctas reveal">
             <a className="btn btn-primary mag" href="#contato">
               Agendar avaliação
             </a>

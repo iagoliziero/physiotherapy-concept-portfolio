@@ -39,6 +39,7 @@ export function Navbar() {
         <a className="btn btn-primary btn--sm mag" href="#contato">
           Agendar
         </a>
+        <span className="nav__progress" data-scroll-progress="" aria-hidden="true" />
       </nav>
     </header>
   );
