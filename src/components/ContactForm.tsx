@@ -43,7 +43,7 @@ export function ContactForm() {
       setSent(false);
       return;
     }
-    // Aqui você pode integrar com Formspree, EmailJS ou uma rota de API
+    // O pedido chega ao Luis pelo WhatsApp: o formulário só valida e monta a mensagem
     setSent(true);
   };
 
@@ -56,10 +56,10 @@ export function ContactForm() {
     "aria-describedby": `contato-${field}-erro`,
   });
 
-  const message = `Olá! Sou ${values.name.trim()} e gostaria de agendar uma avaliação de ${values.treatment}.`;
+  const message = `Olá, Luis! Sou ${values.name.trim()} e quero agendar uma avaliação (${values.treatment}). Meu WhatsApp é ${values.phone.trim()}.`;
 
   return (
-    <form className="glass fade contact__form" noValidate onSubmit={onSubmit} aria-label="Agendamento">
+    <form className="glass contact__form" noValidate onSubmit={onSubmit} aria-label="Agendamento">
       <label className="sr-only" htmlFor="contato-name">
         Nome
       </label>
@@ -90,15 +90,20 @@ export function ContactForm() {
       </div>
 
       <button className="btn btn-primary btn--block mag" type="submit">
-        Solicitar horário
+        Agendar avaliação
       </button>
 
       <div className="form-status" role="status">
         {sent ? (
           <>
-            Recebido! Entraremos em contato pelo WhatsApp em breve.{" "}
-            <a href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
-              Prefere adiantar a conversa?
+            <p>Seu pedido está pronto. Envie pelo WhatsApp para eu confirmar o horário.</p>
+            <a
+              className="btn btn-ghost btn--block form-status__send"
+              href={whatsappLink(message)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Enviar pelo WhatsApp
             </a>
           </>
         ) : null}

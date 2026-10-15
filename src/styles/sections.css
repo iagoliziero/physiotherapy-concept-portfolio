@@ -31,7 +31,8 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   font-size: var(--fs-brand);
   color: var(--ink-strong);
   text-decoration: none;
@@ -88,8 +89,8 @@
 
 .hero h1 {
   font-size: var(--fs-h1);
-  line-height: 1.05;
-  margin: 20px 0 16px;
+  line-height: 0.9;
+  margin: 0 0 24px;
 }
 
 .hero__lead {
@@ -182,7 +183,8 @@
   animation: marquee 26s linear infinite;
   font-family: var(--font-display);
   font-size: var(--fs-marquee);
-  font-weight: 500;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 @keyframes marquee {
@@ -216,9 +218,10 @@
 }
 
 /* ===== 5. Especialidades ===== */
+/* Sem perspectiva na grade: cada card usa a própria (ver effects/tilt.ts), senão
+   o conteúdo dos cards das pontas se desloca para fora */
 .specialties__grid {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  perspective: 900px;
 }
 
 .specialty h3 {
@@ -280,6 +283,15 @@
 .pain__info.is-switching {
   opacity: 0;
   transform: translateY(10px) rotateX(10deg);
+}
+
+/* Região selecionada: informa qual ponto do corpo o painel está mostrando */
+.region-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--tq);
 }
 
 .pain__info h3 {
@@ -370,6 +382,8 @@
 /* ===== 8. Antes e depois ===== */
 .compare {
   position: relative;
+  /* Largura limitada para a ilustração ocupar a caixa em telas largas */
+  max-width: 760px;
   height: 380px;
   border-radius: var(--radius);
   overflow: hidden;
@@ -392,7 +406,8 @@
 
 .compare__pane svg {
   max-width: 90%;
-  height: auto;
+  width: auto;
+  height: 88%;
 }
 
 .compare__pane text {
@@ -603,8 +618,13 @@
   min-height: 20px;
 }
 
-.form-status a {
-  font-weight: 500;
+.form-status p {
+  margin: 0 0 12px;
+}
+
+.form-status__send {
+  border-color: var(--tq);
+  color: var(--tq);
 }
 
 .contact__globe {

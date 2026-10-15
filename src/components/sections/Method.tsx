@@ -1,14 +1,12 @@
 import { ScheduleCta } from "@/components/ScheduleCta";
-import { SplitWords } from "@/components/SplitWords";
 import { methodSteps } from "@/data/content";
 
 /** Método: linha do tempo vertical que se desenha conforme as etapas entram na tela. */
 export function Method() {
   return (
     <section className="sec" id="metodo" aria-labelledby="metodo-title">
-      <span className="tag scr">{"// MÉTODO"}</span>
       <h2 id="metodo-title" className="sec-title">
-        <SplitWords text="A jornada até a alta" />
+        Como funciona
       </h2>
       <div className="timeline" data-timeline="">
         <div className="timeline__track" aria-hidden="true" />

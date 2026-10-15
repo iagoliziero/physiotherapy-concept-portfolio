@@ -7,8 +7,8 @@ export const marqueeItems = [
   "ATENDIMENTO EM CASA",
   "DOR DE CABEÇA TENSIONAL",
   "DTM",
-  "CERVICAL",
-  "LOMBAR",
+  "PESCOÇO",
+  "COSTAS",
   "RECUPERAÇÃO MUSCULAR",
   "MOBILIDADE",
 ] as const;
@@ -40,16 +40,16 @@ export const specialties: Specialty[] = [
     icon: "heartbeat",
     color: "var(--tq)",
     title: "Cervical e DTM",
-    text: "Dor de cabeça tensional, tensão no pescoço e dor na mandíbula.",
+    text: "Dor de cabeça tensional, pescoço travado e dor ao mastigar ou abrir a boca.",
   },
-  { icon: "bone", color: "var(--bl)", title: "Coluna e lombar", text: "Alívio da dor nas costas e orientação de postura." },
+  { icon: "bone", color: "var(--bl)", title: "Coluna e lombar", text: "Dor nas costas que piora depois de um dia inteiro sentado." },
   {
     icon: "run",
     color: "var(--tq)",
     title: "Recuperação muscular",
-    text: "Para quem treina: menos dor e recuperação entre os treinos.",
+    text: "Alívio do músculo dolorido para você voltar a treinar no seu ritmo.",
   },
-  { icon: "yoga", color: "var(--bl)", title: "Mobilidade", text: "Mais amplitude de movimento para treinar e para o dia a dia." },
+  { icon: "yoga", color: "var(--bl)", title: "Mobilidade", text: "Mais amplitude para agachar e correr sem sentir o corpo travado." },
 ];
 
 /** Opções do formulário de agendamento (derivadas das especialidades). */
@@ -71,47 +71,50 @@ export const hotspots: Hotspot[] = [
     key: "cervical",
     label: "Cervical",
     title: "Dor de cabeça tensional e DTM",
-    text: "Tensão no pescoço que vira dor de cabeça e dor na mandíbula (DTM), tratadas na sua casa.",
+    text: "Quando a tensão no pescoço vira dor de cabeça ou a mandíbula dói ao mastigar. Trato as duas coisas na sua casa.",
     position: [0, 2.15, -0.12],
   },
   {
     key: "ombro",
     label: "Ombro",
     title: "Dor e tensão no ombro",
-    text: "Alívio da dor e recuperação do movimento do ombro.",
+    text: "Trabalho o alívio da dor e a volta do movimento do ombro.",
     position: [0.62, 1.92, 0],
   },
   {
     key: "lombar",
     label: "Lombar",
     title: "Dor lombar",
-    text: "Alívio da dor nas costas, com orientações de postura e movimento para o dia a dia.",
+    text: "Alívio da dor nas costas e orientações de postura para o seu dia a dia.",
     position: [0, 0.75, -0.42],
   },
   {
     key: "joelho",
     label: "Joelho",
     title: "Recuperação muscular e mobilidade",
-    text: "Para quem treina: recuperação muscular e ganho de mobilidade no joelho, para voltar ao treino com mais conforto.",
+    text: "Recuperação muscular e mobilidade do joelho para você voltar ao treino com mais conforto.",
     position: [0.22, -1.02, 0.16],
   },
   {
     key: "tornozelo",
     label: "Tornozelo",
     title: "Mobilidade para quem treina",
-    text: "Recuperação muscular da panturrilha e mobilidade do tornozelo, para treinar com mais liberdade.",
+    text: "Recuperação muscular da panturrilha e mobilidade do tornozelo para quem treina.",
     position: [-0.22, -2.08, 0.12],
   },
 ];
 
 export const methodSteps = [
-  { title: "1. Contato pelo WhatsApp", text: "Você chama no WhatsApp, conta o que está sentindo e combina o horário." },
-  { title: "2. Avaliação da queixa", text: "Entender a origem da dor e o quanto ela atrapalha sua rotina e seus treinos." },
+  { title: "1. Contato pelo WhatsApp", text: "Você me chama no WhatsApp, conta o que está sentindo e a gente combina o horário." },
+  {
+    title: "2. Avaliação da queixa",
+    text: "Na primeira visita, entendo de onde vem a dor e o quanto ela atrapalha sua rotina e seus treinos.",
+  },
   {
     title: "3. Sessão em casa",
-    text: "O atendimento acontece na sua casa, sem você precisar se deslocar.",
+    text: "Levo o atendimento até a sua casa. Você não precisa se deslocar.",
   },
-  { title: "4. Orientações e prevenção", text: "Orientações para o dia a dia e para os treinos, para a dor não voltar." },
+  { title: "4. Orientações e prevenção", text: "Você recebe orientações para o dia a dia e para o treino, para manter o resultado." },
 ];
 
 export interface Testimonial {
@@ -123,7 +126,8 @@ export interface Testimonial {
 // Só depoimentos reais, com autorização. Sem eles, a seção fica fora da página (ver src/app/page.tsx)
 export const testimonials: Testimonial[] = [];
 
-export const certifications = ["Atendimento em domicílio"];
+// Credenciais reais (ex.: "CREFITO-X 000000-F"). Vazio: a lista de selos não aparece no "Sobre"
+export const certifications: string[] = [];
 
 /** Capitais conectadas a São Paulo no globo do contato: [latitude, longitude]. */
 export const globeDestinations: [number, number][] = [

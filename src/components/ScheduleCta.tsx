@@ -5,7 +5,7 @@
  */
 export function ScheduleCta({ label = "Agendar avaliação" }: { label?: string }) {
   return (
-    <div className="section-cta fade">
+    <div className="section-cta">
       <a className="btn btn-primary mag" href="#contato">
         {label}
       </a>

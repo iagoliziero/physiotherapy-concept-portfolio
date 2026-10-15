@@ -2,7 +2,6 @@
 
 import { IconChevronLeft, IconChevronRight, IconStarFilled } from "@tabler/icons-react";
 import { useEffect, useRef } from "react";
-import { SplitWords } from "@/components/SplitWords";
 import { testimonials } from "@/data/content";
 import { getDeviceEnv } from "@/lib/env";
 import { addFrame } from "@/lib/loop";
@@ -38,9 +37,8 @@ export function Testimonials() {
 
   return (
     <section className="sec" aria-labelledby="depoimentos-title">
-      <span className="tag scr">{"// DEPOIMENTOS"}</span>
       <h2 id="depoimentos-title" className="sec-title">
-        <SplitWords text="Quem já voltou a se mover" />
+        Quem já voltou a se mover
       </h2>
 
       <div

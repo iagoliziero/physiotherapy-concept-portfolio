@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SplitWords } from "@/components/SplitWords";
 import { type HotspotKey, hotspots } from "@/data/content";
 import { getDeviceEnv } from "@/lib/env";
 import { whenNearViewport } from "@/lib/viewport";
@@ -71,11 +70,10 @@ export function PainMap() {
 
   return (
     <section className="sec" id="onde-doi" aria-labelledby="onde-doi-title">
-      <span className="tag scr">{"// MAPA DA DOR 3D"}</span>
       <h2 id="onde-doi-title" className="sec-title--tight">
-        <SplitWords text="Onde dói?" />
+        Onde dói?
       </h2>
-      <p className="sec-lead fade muted">Arraste para girar o corpo e toque nos pontos brilhantes.</p>
+      <p className="sec-lead muted">Arraste para girar o corpo e toque no ponto que dói.</p>
 
       <div className="grid pain__grid">
         <div
@@ -99,11 +97,11 @@ export function PainMap() {
             ))}
           </div>
           <div className={`glass pain__info${switching ? " is-switching" : ""}`} aria-live="polite">
-            <span className="tag">{`// ${info.label.toUpperCase()}`}</span>
+            <span className="region-label">{info.label}</span>
             <h3>{info.title}</h3>
             <p className="muted">{info.text}</p>
             <a className="btn btn-primary mag" href="#contato">
-              Quero tratar isso
+              Agendar avaliação
             </a>
           </div>
         </div>

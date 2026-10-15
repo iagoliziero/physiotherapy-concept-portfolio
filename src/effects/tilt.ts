@@ -23,7 +23,8 @@ export function initTilt({ reducedMotion }: { reducedMotion: boolean }): () => v
     card.style.setProperty("--x", `${x * 100}%`);
     card.style.setProperty("--y", `${y * 100}%`);
     if (!reducedMotion) {
-      card.style.transform = `rotateY(${(x - 0.5) * 20}deg) rotateX(${(0.5 - y) * 20}deg) translateZ(14px)`;
+      // Perspectiva no próprio card: o 3D parte do centro dele, não do centro da grade
+      card.style.transform = `perspective(900px) rotateY(${(x - 0.5) * 20}deg) rotateX(${(0.5 - y) * 20}deg) translateZ(14px)`;
     }
   };
 

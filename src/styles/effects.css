@@ -25,7 +25,7 @@
   transform: none;
 }
 
-/* ===== Gradiente animado fluindo no texto ===== */
+/* ===== Gradiente animado fluindo no texto (fim do título do hero) ===== */
 .shine {
   background: linear-gradient(90deg, var(--tq), var(--bl), var(--vi), var(--tq));
   background-size: 300%;

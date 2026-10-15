@@ -26,11 +26,25 @@ h2,
 h3 {
   font-family: var(--font-display);
   color: var(--ink-strong);
-  font-weight: 500;
   margin: 0;
-  line-height: 1.15;
   /* Rede de segurança: uma palavra longa quebra em vez de estourar a tela */
   overflow-wrap: break-word;
+}
+
+/* Títulos principais: condensados, pesados e em caixa alta, como as capas dos Reels */
+h1,
+h2 {
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+}
+
+/* Subtítulos: mesma família, sem caixa alta, para a leitura continuar fácil */
+h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
 }
 
 p {
@@ -108,24 +122,17 @@ section[id] {
 }
 
 .sec-title {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .sec-title--tight {
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .sec-lead {
   margin: 0 0 24px;
-}
-
-.tag {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--tq);
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
+  /* Linhas com menos de ~80 caracteres para leitura confortável */
+  max-width: 62ch;
 }
 
 .glass {

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import profilePhoto from "@/assets/luis-fernando.jpg";
 import { ScheduleCta } from "@/components/ScheduleCta";
-import { SplitWords } from "@/components/SplitWords";
 import { site } from "@/config/site";
 import { certifications } from "@/data/content";
 
@@ -10,7 +9,7 @@ export function About() {
   return (
     <section className="sec about" id="sobre" aria-labelledby="sobre-title">
       <div className="grid about__grid">
-        <div className="about__avatar-wrap fade">
+        <div className="about__avatar-wrap">
           <div className="avatar-frame card">
             {/* O miolo gira ao contrário da moldura, então a foto fica sempre de pé */}
             <div>
@@ -25,21 +24,21 @@ export function About() {
           </div>
         </div>
         <div>
-          <span className="tag scr">{"// SOBRE"}</span>
-          <h2 id="sobre-title">
-            <SplitWords text={site.name} />
-          </h2>
-          <p className="about__bio fade muted">
-            Fisioterapeuta com atendimento em domicílio, com foco em dor de cabeça tensional, DTM, recuperação
-            muscular e mobilidade para quem treina.
+          <h2 id="sobre-title">{site.name}</h2>
+          <p className="about__bio muted">
+            Sou fisioterapeuta e atendo na casa do paciente. Trabalho com dor de cabeça tensional, DTM e dores no
+            pescoço e nas costas. Também cuido da recuperação muscular e da mobilidade de quem treina.
           </p>
-          <ul className="badges fade" aria-label="Formação e certificações">
-            {certifications.map((item) => (
-              <li key={item} className="badge">
-                {item}
-              </li>
-            ))}
-          </ul>
+          {/* Selos só aparecem com credenciais informadas (ex.: CREFITO) em src/data/content.ts */}
+          {certifications.length > 0 ? (
+            <ul className="badges" aria-label="Formação e certificações">
+              {certifications.map((item) => (
+                <li key={item} className="badge">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <ScheduleCta />
         </div>
       </div>

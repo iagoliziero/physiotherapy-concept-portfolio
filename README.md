@@ -6,7 +6,8 @@ estático em `referencia/index.html` seguindo a especificação de `referencia/p
 - **3D:** Three.js (coluna do hero, corpo interativo e globo), carregado sob demanda
 - **Smooth scroll:** Lenis
 - **Ícones:** Tabler Icons (`@tabler/icons-react`, só os ícones usados entram no bundle)
-- **Fontes:** Space Grotesk + Inter via `next/font` (auto-hospedadas)
+- **Fontes:** Barlow Condensed (títulos, condensada e em caixa alta) + Inter (texto) via `next/font`,
+  auto-hospedadas. A cópia em `src/app/fonts/` (licença OFL) é usada só para gerar a imagem Open Graph.
 
 ## Rodando
 
@@ -34,7 +35,7 @@ src/
   components/     Navbar, Footer, GlobalEffects, SceneMount, ContactForm…
     sections/     Hero, Marquee, Stats, Specialties, PainMap, Method, BeforeAfter, Testimonials, About, Contact
   scenes/         stage.ts (renderer, luzes, visibilidade, resize), spine.ts, body.ts, globe.ts
-  effects/        cursor, ripple, magnetic, tilt, reveal, scramble, counter, timeline, particles, smoothScroll
+  effects/        cursor, ripple, magnetic, tilt, reveal, counter, timeline, particles, smoothScroll
   lib/            loop.ts (requestAnimationFrame único), env.ts (reduced motion / mobile / ponteiro)
   data/           content.ts — todos os textos editáveis
   config/         site.ts — nome, telefone, WhatsApp, endereço, URL

@@ -7,7 +7,7 @@ import { site } from "@/config/site";
 const links = [
   { href: "#especialidades", label: "Tratamentos" },
   { href: "#onde-doi", label: "Onde dói?" },
-  { href: "#metodo", label: "Método" },
+  { href: "#metodo", label: "Como funciona" },
   { href: "#contato", label: "Contato" },
 ];
 

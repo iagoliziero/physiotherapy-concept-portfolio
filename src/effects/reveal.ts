@@ -1,13 +1,12 @@
 import { countUp } from "./counter";
-import { scramble } from "./scramble";
 
 /** Elementos animados na primeira vez em que entram na tela. */
-const SELECTOR = "[data-split], .fade, .scr, [data-count], [data-progress]";
+const SELECTOR = "[data-split], .fade, [data-count], [data-progress]";
 const RING_LENGTH = 213.6; // 2πr do anel de progresso (r = 34)
 
 /**
  * Observador único de entrada na tela: aplica a classe `is-in` (reveal
- * palavra por palavra e fade), dispara o scramble das tags, os contadores
+ * palavra por palavra e fade), dispara os contadores
  * e o preenchimento dos anéis SVG.
  */
 export function initReveal({ reducedMotion }: { reducedMotion: boolean }): () => void {
@@ -21,7 +20,6 @@ export function initReveal({ reducedMotion }: { reducedMotion: boolean }): () =>
         observer.unobserve(el);
         el.classList.add("is-in");
 
-        if (el.classList.contains("scr") && !reducedMotion) stoppers.push(scramble(el));
         if (el.dataset.count !== undefined) stoppers.push(countUp(el, reducedMotion ? 0 : 1800));
         if (el.dataset.progress !== undefined) {
           el.style.strokeDashoffset = String(RING_LENGTH * (1 - Number(el.dataset.progress)));

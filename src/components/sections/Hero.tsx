@@ -1,9 +1,8 @@
-import { IconSparkles } from "@tabler/icons-react";
 import { HeroParticles } from "@/components/HeroParticles";
 import { SceneMount } from "@/components/SceneMount";
 import { SplitWords } from "@/components/SplitWords";
 
-/** Hero (100vh): título com reveal, aurora, constelação e coluna 3D. */
+/** Hero (100vh): título com reveal palavra por palavra, aurora, constelação e coluna 3D. */
 export function Hero() {
   return (
     <section className="hero" id="inicio" aria-labelledby="hero-title">
@@ -15,16 +14,15 @@ export function Hero() {
 
       <div className="hero__inner">
         <div className="hero__copy">
-          <span className="badge">
-            <IconSparkles size={16} aria-hidden="true" /> Fisioterapia em domicílio
-          </span>
+          {/* Quebras fixas: o título mantém as mesmas três linhas em qualquer tela */}
           <h1 id="hero-title">
-            <SplitWords text="Movimento sem dor" />
+            <SplitWords text={"Fisioterapia\nque vai até"} />
             <br />
-            <span className="shine">começa aqui</span>
+            <span className="shine">a sua casa</span>
           </h1>
           <p className="hero__lead fade muted">
-            Fisioterapia no conforto da sua casa, para você voltar a treinar, trabalhar e viver sem dor.
+            Trato dor de cabeça tensional, DTM e dores no pescoço e nas costas, e cuido da recuperação de quem
+            treina. Você agenda pelo WhatsApp e eu vou até você.
           </p>
           <div className="hero__ctas fade">
             <a className="btn btn-primary mag" href="#contato">

@@ -7,9 +7,9 @@ export const site = {
   brand: "Luis Fernando",
   title: "Luis Fernando | Fisioterapia em domicílio",
   description:
-    "Fisioterapia em domicílio. Alívio de dor de cabeça tensional, DTM e dores no corpo, com recuperação muscular e mobilidade para quem treina.",
+    "Fisioterapia em domicílio com Luis Fernando: dor de cabeça tensional, DTM, dores no pescoço e nas costas, e recuperação muscular para quem treina. Agende pelo WhatsApp.",
   ogTitle: "Luis Fernando | Fisioterapia em domicílio",
-  ogDescription: "Movimento sem dor começa aqui. Agende sua sessão em casa pelo WhatsApp.",
+  ogDescription: "Fisioterapia que vai até a sua casa. Agende sua avaliação pelo WhatsApp.",
   /** Defina NEXT_PUBLIC_SITE_URL no deploy para gerar URLs absolutas corretas. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   // Ainda não informados. Campos vazios ficam ocultos no site.

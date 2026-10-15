@@ -3,7 +3,6 @@
 import { IconArrowsHorizontal } from "@tabler/icons-react";
 import { useState } from "react";
 import { ScheduleCta } from "@/components/ScheduleCta";
-import { SplitWords } from "@/components/SplitWords";
 
 /*
  * Ilustrações estáticas fora do componente: o slider rerenderiza a cada
@@ -57,13 +56,15 @@ export function BeforeAfter() {
 
   return (
     <section className="sec" aria-labelledby="resultados-title">
-      <span className="tag scr">{"// RESULTADOS"}</span>
       <h2 id="resultados-title" className="sec-title--tight">
-        <SplitWords text="Antes e depois" />
+        Postura que pesa no pescoço
       </h2>
-      <p className="sec-lead fade muted">Arraste para comparar a postura antes e depois do tratamento (ilustração).</p>
+      <p className="sec-lead muted">
+        Com a cabeça projetada para a frente, o pescoço trabalha sobrecarregado. Essa postura pode contribuir para
+        a dor de cabeça tensional. Arraste para comparar.
+      </p>
 
-      <div className="compare glass fade">
+      <div className="compare glass">
         <div className="compare__pane compare__pane--after">{afterIllustration}</div>
 
         {/* "Antes" fica por cima, recortado pelo slider */}
@@ -81,7 +82,7 @@ export function BeforeAfter() {
           max={100}
           value={value}
           onChange={(e) => setValue(Number(e.target.value))}
-          aria-label="Comparar postura antes e depois"
+          aria-label="Comparar a postura com a cabeça projetada e a postura alinhada"
           aria-valuetext={`${value}% mostrando o antes`}
         />
       </div>
