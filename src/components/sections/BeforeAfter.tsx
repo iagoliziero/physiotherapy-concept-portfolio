@@ -1,8 +1,14 @@
 "use client";
 
 import { IconArrowsHorizontal } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScheduleCta } from "@/components/ScheduleCta";
+import { addFrame } from "@/lib/loop";
+
+/** Dica de "dá para arrastar": espera, duração e amplitude do balanço (pontos percentuais). */
+const HINT_DELAY = 500;
+const HINT_DURATION = 2200;
+const HINT_SWING = 22;
 
 /*
  * Ilustrações estáticas fora do componente: o slider rerenderiza a cada
@@ -50,9 +56,48 @@ const handleIcon = (
   </div>
 );
 
-/** Antes e depois: slider arrastável comparando a postura. */
+/**
+ * Antes e depois: slider arrastável comparando a postura. Na primeira vez
+ * que aparece na tela, o divisor balança suavemente para mostrar que dá
+ * para arrastar; qualquer toque do usuário interrompe a dica.
+ */
 export function BeforeAfter() {
   const [value, setValue] = useState(50);
+  const compare = useRef<HTMLDivElement>(null);
+  const stopHint = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    const el = compare.current;
+    if (!el) return;
+    let timer: number | undefined;
+    let stopFrame = () => {};
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        timer = window.setTimeout(() => {
+          let start = -1;
+          stopFrame = addFrame((_t, _d, now) => {
+            if (start < 0) start = now;
+            const t = Math.min((now - start) / HINT_DURATION, 1);
+            // Vai para um lado, para o outro e volta ao meio, entrando e saindo devagar
+            setValue(t < 1 ? 50 + HINT_SWING * Math.sin(2 * Math.PI * t) * Math.sin(Math.PI * t) : 50);
+            if (t >= 1) stopFrame();
+          });
+        }, HINT_DELAY);
+      },
+      { threshold: 0.6 },
+    );
+    observer.observe(el);
+
+    stopHint.current = () => {
+      observer.disconnect();
+      window.clearTimeout(timer);
+      stopFrame();
+    };
+    return () => stopHint.current();
+  }, []);
 
   return (
     <section className="sec" aria-labelledby="resultados-title">
@@ -64,7 +109,7 @@ export function BeforeAfter() {
         a dor de cabeça tensional. Arraste para comparar.
       </p>
 
-      <div className="compare glass reveal">
+      <div ref={compare} className="compare glass reveal">
         <div className="compare__pane compare__pane--after">{afterIllustration}</div>
 
         {/* "Antes" fica por cima, recortado pelo slider */}
@@ -81,9 +126,14 @@ export function BeforeAfter() {
           min={0}
           max={100}
           value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
+          onPointerDown={() => stopHint.current()}
+          onFocus={() => stopHint.current()}
+          onChange={(e) => {
+            stopHint.current();
+            setValue(Number(e.target.value));
+          }}
           aria-label="Comparar a postura com a cabeça projetada e a postura alinhada"
-          aria-valuetext={`${value}% mostrando o antes`}
+          aria-valuetext={`${Math.round(value)}% mostrando o antes`}
         />
       </div>
       <ScheduleCta />

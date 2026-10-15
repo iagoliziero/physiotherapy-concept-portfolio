@@ -51,7 +51,9 @@ Decisões principais:
 - **Efeitos de rolagem** só com `transform`/`translate`/`opacity` (nada que refaça o layout):
   blocos `.reveal` sobem ao entrar na tela, em cascata quando entram juntos; títulos
   `.reveal-mask` sobem de trás de uma máscara; a faixa acelera no sentido da rolagem; o texto
-  do hero fica para trás e esmaece (só desktop); e uma linha na navbar mostra o progresso.
+  do hero fica para trás e esmaece (só desktop); uma linha na navbar mostra o progresso; a
+  linha do tempo do método se desenha junto com a rolagem, com um ponto de luz na ponta; e o
+  comparador de postura balança uma vez ao aparecer, mostrando que dá para arrastar.
 - **HTML no servidor, efeitos no cliente:** as seções são Server Components; os efeitos
   globais atuam sobre classes/atributos (`.reveal`, `.mag`, `.card`, `data-split`, `data-count`…).
 - **Mobile/touch:** menos partículas e vértebras, `pixelRatio` 1, sem antialias e cursor nativo.

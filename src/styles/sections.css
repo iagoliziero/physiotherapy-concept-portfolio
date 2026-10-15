@@ -344,11 +344,31 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Comprimento definido em effects/timeline.ts; a rolagem só muda o scaleY */
 .timeline__progress {
   height: 0;
   background: linear-gradient(var(--tq), var(--bl));
   box-shadow: 0 0 12px var(--tq);
-  transition: height 0.8s ease;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+/* Ponto de luz na ponta da linha (passa por trás dos pontos das etapas) */
+.timeline__tip {
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 8px 2px var(--tq),
+    0 0 22px 6px rgba(45, 212, 191, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 .step {

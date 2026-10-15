@@ -1,7 +1,7 @@
 import { ScheduleCta } from "@/components/ScheduleCta";
 import { methodSteps } from "@/data/content";
 
-/** Método: linha do tempo vertical que se desenha conforme as etapas entram na tela. */
+/** Método: linha do tempo vertical que se desenha acompanhando a rolagem. */
 export function Method() {
   return (
     <section className="sec" id="metodo" aria-labelledby="metodo-title">
@@ -11,6 +11,7 @@ export function Method() {
       <div className="timeline" data-timeline="">
         <div className="timeline__track" aria-hidden="true" />
         <div className="timeline__progress" data-timeline-progress="" aria-hidden="true" />
+        <div className="timeline__tip" data-timeline-tip="" aria-hidden="true" />
         <ol className="timeline__steps">
           {methodSteps.map((step) => (
             <li key={step.title} className="step">
