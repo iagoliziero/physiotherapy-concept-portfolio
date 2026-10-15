@@ -1,0 +1,31 @@
+/* ===== Design tokens ===== */
+:root {
+  /* Paleta */
+  --bg: #0b1220;
+  --bg-raised: #111a2e;
+  --tq: #2dd4bf; /* verde-água */
+  --bl: #38bdf8; /* azul */
+  --vi: #a78bfa; /* violeta de apoio */
+  --ink: #e2e8f0;
+  --ink-strong: #f8fafc;
+  --mu: #94a3b8;
+  --on-tq: #04342c; /* texto sobre verde-água */
+  --danger: #f09595;
+  --star: #fac775;
+  --wa: #16a34a; /* verde do WhatsApp escurecido para contraste 3:1 com o ícone branco */
+
+  /* Glassmorphism */
+  --gl: rgba(255, 255, 255, 0.04);
+  --gb: rgba(255, 255, 255, 0.1);
+
+  /* Tipografia (variáveis injetadas pelo next/font no <html>) */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-body: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* Layout e movimento */
+  --max-w: 1180px;
+  --radius: 16px;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --nav-offset: 80px;
+}

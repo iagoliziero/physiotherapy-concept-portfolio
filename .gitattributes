@@ -1,0 +1,2 @@
+# Quebras de linha LF em todas as plataformas (evita diffs de CRLF no Windows)
+* text=auto eol=lf

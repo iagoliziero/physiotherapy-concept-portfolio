@@ -1,0 +1,173 @@
+/* ===== Reveal palavra por palavra ===== */
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) rotateX(-60deg);
+  filter: blur(4px);
+  transition: all 0.7s var(--ease-out);
+}
+
+.is-in .word {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ===== Fade ao entrar na tela ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: all 0.9s var(--ease-out);
+}
+
+.fade.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Gradiente animado fluindo no texto ===== */
+.shine {
+  background: linear-gradient(90deg, var(--tq), var(--bl), var(--vi), var(--tq));
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 300%;
+  }
+}
+
+/* ===== Cards com tilt 3D e brilho radial que segue o cursor ===== */
+.card {
+  padding: 24px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.15s ease-out,
+    border-color 0.3s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(260px circle at var(--x, 50%) var(--y, 50%), rgba(45, 212, 191, 0.2), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: rgba(45, 212, 191, 0.6);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Ícone "salta" para fora do card */
+.card .card-icon {
+  display: inline-flex;
+  transform: translateZ(40px);
+}
+
+.card h3 {
+  transform: translateZ(25px);
+}
+
+.card:hover .card-icon {
+  animation: bob 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  to {
+    transform: translateZ(40px) translateY(-5px) rotate(-8deg);
+  }
+}
+
+/* ===== Cursor customizado, rastro e ripple ===== */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--tq);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.25s,
+    height 0.25s,
+    background 0.25s,
+    opacity 0.25s;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+
+.cursor.is-big {
+  width: 60px;
+  height: 60px;
+  background: rgba(45, 212, 191, 0.15);
+}
+
+.cursor-trail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: var(--bl);
+  pointer-events: none;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+}
+
+.ripple {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--tq);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 98;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.7s ease-out forwards;
+}
+
+@keyframes ripple {
+  to {
+    width: 130px;
+    height: 130px;
+    opacity: 0;
+  }
+}
+
+/* O cursor nativo só some quando o customizado foi de fato ativado */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* ===== Movimento reduzido: desliga animações contínuas e mostra o conteúdo ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .word,
+  .fade,
+  .step {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Rafael Moura | Fisioterapia Esportiva e Coluna em São Paulo</title>
+<meta name="description" content="Fisioterapia esportiva e reabilitação de coluna em São Paulo. Tratamento baseado em evidência para lombalgia, hérnia de disco, lesões esportivas e pós-operatório.">
+<meta property="og:title" content="Dr. Rafael Moura | Fisioterapia">
+<meta property="og:description" content="Movimento sem dor começa aqui. Agende sua avaliação.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1220">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Physiotherapist","name":"Dr. Rafael Moura - Fisioterapia","address":{"@type":"PostalAddress","streetAddress":"Av. Paulista, 1000","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"telephone":"+55-11-99999-0000","medicalSpecialty":["Physiotherapy","SportsMedicine"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+<style>
+/* ===== Tokens e base ===== */
+:root{--bg:#0B1220;--tq:#2DD4BF;--bl:#38BDF8;--vi:#A78BFA;--mu:#94A3B8;--gl:rgba(255,255,255,.04);--gb:rgba(255,255,255,.1)}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:#E2E8F0;font-family:Inter,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:#F8FAFC;font-weight:500;margin:0}
+a{color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sec{padding:110px 24px;max-width:1180px;margin:0 auto;position:relative}
+.sec h2{font-size:clamp(28px,4vw,44px)}
+.tag{font-size:12px;color:var(--tq);letter-spacing:.08em;margin-bottom:10px;display:block;font-family:monospace}
+.glass{background:var(--gl);border:1px solid var(--gb);border-radius:16px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.muted{color:var(--mu)}
+
+/* ===== Botões ===== */
+.b1,.b2{font-family:Inter,sans-serif;font-size:15px;padding:13px 22px;border-radius:12px;transition:transform .2s ease-out,border-color .2s,color .2s;position:relative;overflow:hidden}
+.b1{background:var(--tq);color:#04342C;border:none;font-weight:500}
+.b1::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);animation:sweep 3s infinite}
+@keyframes sweep{60%,100%{left:130%}}
+.b2{background:transparent;color:#E2E8F0;border:1px solid rgba(255,255,255,.25)}
+.b2:hover{border-color:var(--tq);color:var(--tq)}
+:focus-visible{outline:2px solid var(--tq);outline-offset:3px}
+
+/* ===== Navbar fixa ===== */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-radius:14px;border:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(11,18,32,.6);border-color:var(--gb);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+nav .links{display:flex;gap:24px;font-size:14px;color:var(--mu)}
+nav .links a{text-decoration:none;transition:color .2s}nav .links a:hover{color:var(--tq)}
+
+/* ===== Reveal e animações de entrada ===== */
+.w{display:inline-block;opacity:0;transform:translateY(18px) rotateX(-60deg);filter:blur(4px);transition:all .7s cubic-bezier(.2,.7,.2,1)}
+.on .w{opacity:1;transform:none;filter:none}
+.fade{opacity:0;transform:translateY(28px);transition:all .9s cubic-bezier(.2,.7,.2,1)}
+.fade.on{opacity:1;transform:none}
+.shine{background:linear-gradient(90deg,#2DD4BF,#38BDF8,#A78BFA,#2DD4BF);background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:300%}}
+
+/* ===== Hero ===== */
+#hero{position:relative;min-height:100vh;overflow:hidden}
+.hero-in{max-width:1180px;margin:0 auto;min-height:100vh;padding:110px 24px 40px;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:20px;position:relative;z-index:2}
+#hero h1{font-size:clamp(40px,6vw,78px);line-height:1.05;margin:20px 0 16px}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.33;animation:fl 14s ease-in-out infinite alternate}
+@keyframes fl{to{transform:translate(80px,50px) scale(1.25)}}
+#stars{position:absolute;inset:0;width:100%;height:100%}
+#c3d{height:min(600px,72vh)}
+.bdg{font-size:13px;padding:6px 12px;border-radius:20px;border:1px solid rgba(45,212,191,.5);color:var(--tq);background:rgba(45,212,191,.08)}
+
+/* ===== Marquee ===== */
+.mq{transform:skewY(-3deg);background:var(--tq);color:#04342C;padding:14px 0;overflow:hidden;white-space:nowrap;margin:20px 0}
+.mq div{display:inline-block;animation:mq 26s linear infinite;font-family:'Space Grotesk';font-size:22px;font-weight:500}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ===== Cards com tilt ===== */
+.grid{display:grid;gap:16px}
+.card{padding:24px;transition:transform .15s ease-out,border-color .3s;transform-style:preserve-3d;position:relative}
+.card::before{content:'';position:absolute;inset:0;border-radius:16px;background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),rgba(45,212,191,.2),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:rgba(45,212,191,.6)}.card:hover::before{opacity:1}
+.card .ic{display:inline-block;font-size:32px;transform:translateZ(40px)}.card h3{transform:translateZ(25px)}
+.card:hover .ic{animation:bob .8s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateZ(40px) translateY(-5px) rotate(-8deg)}}
+.ring-s{transform:rotate(-90deg);transform-origin:center}
+
+/* ===== Corpo 3D ===== */
+#b3d{height:480px;position:relative;overflow:hidden;touch-action:none}
+.hs{font-size:13px;padding:7px 12px;border-radius:20px;border:1px solid var(--gb);background:transparent;color:var(--mu);transition:all .2s;font-family:Inter}
+.hs.act{border-color:var(--tq);color:#04342C;background:var(--tq)}
+#info{padding:24px;transition:transform .4s,opacity .4s}
+
+/* ===== Linha do tempo ===== */
+.step{display:flex;gap:18px;padding:0 0 36px;opacity:.3;transition:opacity .6s,transform .6s;transform:translateX(-10px)}
+.step.on{opacity:1;transform:none}.step.on .dot{background:var(--tq);box-shadow:0 0 0 6px rgba(45,212,191,.15),0 0 18px var(--tq)}
+.dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--tq);background:var(--bg);flex-shrink:0;margin-top:6px;transition:all .5s;position:relative;z-index:1}
+
+/* ===== Antes e depois ===== */
+.ba{position:relative;height:380px;border-radius:16px;overflow:hidden;user-select:none}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;z-index:5;cursor:ew-resize}
+
+/* ===== Depoimentos em cilindro ===== */
+.cyl{position:relative;height:240px;perspective:1200px}
+.ring{position:absolute;left:50%;top:10px;width:250px;height:200px;margin-left:-125px;transform-style:preserve-3d}
+.tc{position:absolute;inset:0;padding:20px;backface-visibility:hidden;font-size:14px;background:rgba(17,26,46,.92)}
+
+/* ===== Sobre ===== */
+.frame{width:220px;height:220px;border-radius:50%;padding:5px;background:conic-gradient(var(--tq),var(--bl),transparent,var(--tq));animation:spin 6s linear infinite}
+.frame>div{animation:spin 6s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== Formulário ===== */
+input,select{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--gb);color:#E2E8F0;border-radius:12px;padding:12px 14px;font-family:Inter,sans-serif;font-size:15px}
+input:focus,select:focus{outline:none;border-color:var(--tq);box-shadow:0 0 0 3px rgba(45,212,191,.15)}
+select option{background:#0B1220}
+.err{color:#F09595;font-size:13px;min-height:18px;margin:3px 0 8px}
+
+/* ===== WhatsApp flutuante ===== */
+.wa{position:fixed;right:24px;bottom:24px;z-index:40;width:60px;height:60px;border-radius:50%;background:#22C55E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;animation:pulse 2s infinite;text-decoration:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 18px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+
+/* ===== Cursor, rastro e ripple ===== */
+#cur{position:fixed;width:24px;height:24px;border:1.5px solid var(--tq);border-radius:50%;pointer-events:none;z-index:100;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;opacity:0;mix-blend-mode:screen}
+#cur.big{width:60px;height:60px;background:rgba(45,212,191,.15)}
+.tr{position:fixed;border-radius:50%;background:var(--bl);pointer-events:none;z-index:99;transform:translate(-50%,-50%)}
+.rip{position:fixed;width:10px;height:10px;border:1.5px solid var(--tq);border-radius:50%;pointer-events:none;z-index:98;transform:translate(-50%,-50%);animation:rip .7s ease-out forwards}
+@keyframes rip{to{width:130px;height:130px;opacity:0}}
+@media (pointer:fine){body,body *{cursor:none!important}}
+
+/* ===== Responsivo ===== */
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr;padding-top:100px}
+  #c3d{height:380px}
+  nav .links{display:none}
+  .sec{padding:80px 20px}
+  #b3d{height:400px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.w,.fade{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+
+<!-- ===== Navbar ===== -->
+<nav id="nav">
+  <span style="font-family:'Space Grotesk';font-weight:500;font-size:18px"><i class="ti ti-activity" style="color:var(--tq)" aria-hidden="true"></i> Rafael Moura</span>
+  <div class="links"><a href="#esp">Tratamentos</a><a href="#body">Onde dói?</a><a href="#met">Método</a><a href="#ctt">Contato</a></div>
+  <button class="b1 mag" data-go="#ctt" style="padding:9px 16px;font-size:14px">Agendar</button>
+</nav>
+
+<main>
+<!-- ===== Hero ===== -->
+<section id="hero">
+  <div class="blob" style="width:420px;height:420px;background:#2DD4BF;top:-120px;left:-100px"></div>
+  <div class="blob" style="width:380px;height:380px;background:#38BDF8;bottom:-100px;right:-80px;animation-delay:-5s"></div>
+  <div class="blob" style="width:300px;height:300px;background:#7F77DD;top:35%;left:42%;animation-delay:-9s;opacity:.22"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <div style="perspective:600px">
+      <span class="bdg"><i class="ti ti-sparkles" aria-hidden="true"></i> Fisioterapia esportiva e coluna</span>
+      <h1><span data-split>Movimento sem dor</span><br><span class="shine">começa aqui</span></h1>
+      <p class="fade muted" style="font-size:18px;max-width:480px;margin:0 0 28px">Reabilitação baseada em evidência para você voltar a treinar, trabalhar e viver sem limitações.</p>
+      <div class="fade" style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="b1 mag" data-go="#ctt">Agendar avaliação</button>
+        <button class="b2 mag" data-go="#body">Onde dói?</button>
+      </div>
+    </div>
+    <div id="c3d" aria-label="Coluna vertebral 3D animada"></div>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div>COLUNA ✦ JOELHO ✦ OMBRO ✦ PÓS-OPERATÓRIO ✦ PILATES CLÍNICO ✦ LESÕES ESPORTIVAS ✦ POSTURA ✦ COLUNA ✦ JOELHO ✦ OMBRO ✦ PÓS-OPERATÓRIO ✦ PILATES CLÍNICO ✦ LESÕES ESPORTIVAS ✦ POSTURA ✦&nbsp;</div></div>
+
+<!-- ===== Números ===== -->
+<section class="sec" style="padding-top:60px;padding-bottom:40px">
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <div class="glass fade card" style="text-align:center"><svg width="110" height="110" viewBox="0 0 90 90"><circle cx="45" cy="45" r="34" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/><circle class="ring-s pr" data-p="0.85" cx="45" cy="45" r="34" fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6" style="transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)"/><text x="45" y="51" text-anchor="middle" fill="#F8FAFC" font-size="18" font-family="Space Grotesk"><tspan class="cnt" data-n="12">0</tspan>+</text></svg><div class="muted">anos de experiência</div></div>
+    <div class="glass fade card" style="text-align:center"><svg width="110" height="110" viewBox="0 0 90 90"><circle cx="45" cy="45" r="34" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/><circle class="ring-s pr" data-p="0.92" cx="45" cy="45" r="34" fill="none" stroke="#38BDF8" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6" style="transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)"/><text x="45" y="51" text-anchor="middle" fill="#F8FAFC" font-size="16" font-family="Space Grotesk"><tspan class="cnt" data-n="3200">0</tspan></text></svg><div class="muted">pacientes atendidos</div></div>
+    <div class="glass fade card" style="text-align:center"><svg width="110" height="110" viewBox="0 0 90 90"><circle cx="45" cy="45" r="34" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/><circle class="ring-s pr" data-p="0.98" cx="45" cy="45" r="34" fill="none" stroke="#2DD4BF" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6" style="transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)"/><text x="45" y="51" text-anchor="middle" fill="#F8FAFC" font-size="18" font-family="Space Grotesk"><tspan class="cnt" data-n="98">0</tspan>%</text></svg><div class="muted">de satisfação</div></div>
+  </div>
+</section>
+
+<!-- ===== Especialidades ===== -->
+<section class="sec" id="esp">
+  <span class="tag scr">// ESPECIALIDADES</span>
+  <h2 data-split style="margin-bottom:32px">Tratamento certo para cada corpo</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));perspective:900px">
+    <article class="glass card fade"><i class="ti ti-bone ic" style="color:var(--tq)" aria-hidden="true"></i><h3 style="font-size:20px;margin:14px 0 6px">Coluna</h3><p class="muted" style="margin:0">Hérnia de disco, lombalgia e correção postural.</p></article>
+    <article class="glass card fade"><i class="ti ti-run ic" style="color:var(--bl)" aria-hidden="true"></i><h3 style="font-size:20px;margin:14px 0 6px">Esportiva</h3><p class="muted" style="margin:0">Joelho, tornozelo e retorno ao esporte.</p></article>
+    <article class="glass card fade"><i class="ti ti-heartbeat ic" style="color:var(--tq)" aria-hidden="true"></i><h3 style="font-size:20px;margin:14px 0 6px">Pós-operatório</h3><p class="muted" style="margin:0">Recuperação segura de cirurgias ortopédicas.</p></article>
+    <article class="glass card fade"><i class="ti ti-yoga ic" style="color:var(--bl)" aria-hidden="true"></i><h3 style="font-size:20px;margin:14px 0 6px">Pilates clínico</h3><p class="muted" style="margin:0">Fortalecimento, mobilidade e prevenção.</p></article>
+  </div>
+</section>
+
+<!-- ===== Corpo 3D interativo ===== -->
+<section class="sec" id="body">
+  <span class="tag scr">// MAPA DA DOR 3D</span>
+  <h2 data-split style="margin-bottom:8px">Onde dói?</h2>
+  <p class="fade muted" style="margin:0 0 24px">Arraste para girar o corpo e toque nos pontos brilhantes.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center;gap:24px">
+    <div id="b3d" class="glass"></div>
+    <div>
+      <div id="hsb" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px"></div>
+      <div class="glass" id="info">
+        <span class="tag" id="iT">// LOMBAR</span>
+        <h3 id="iH" style="font-size:24px;margin-bottom:8px">Dor lombar e hérnia de disco</h3>
+        <p id="iP" class="muted" style="margin:0 0 18px">Terapia manual, estabilização do core e reeducação postural.</p>
+        <button class="b1 mag" data-go="#ctt">Quero tratar isso</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Método ===== -->
+<section class="sec" id="met">
+  <span class="tag scr">// MÉTODO</span>
+  <h2 data-split style="margin-bottom:36px">A jornada até a alta</h2>
+  <div style="position:relative;max-width:640px">
+    <div style="position:absolute;left:8px;top:8px;bottom:44px;width:2px;background:rgba(255,255,255,.08)"></div>
+    <div id="tline" style="position:absolute;left:8px;top:8px;width:2px;height:0;background:linear-gradient(var(--tq),var(--bl));box-shadow:0 0 12px var(--tq);transition:height .8s ease"></div>
+    <div class="step"><div class="dot"></div><div><h3 style="font-size:21px">1. Avaliação</h3><p class="muted" style="margin:4px 0 0">Testes de força, mobilidade e análise do movimento.</p></div></div>
+    <div class="step"><div class="dot"></div><div><h3 style="font-size:21px">2. Diagnóstico funcional</h3><p class="muted" style="margin:4px 0 0">Identificamos a causa da dor, não apenas o sintoma.</p></div></div>
+    <div class="step"><div class="dot"></div><div><h3 style="font-size:21px">3. Tratamento</h3><p class="muted" style="margin:4px 0 0">Terapia manual, exercícios e tecnologia com metas mensuráveis.</p></div></div>
+    <div class="step"><div class="dot"></div><div><h3 style="font-size:21px">4. Alta e prevenção</h3><p class="muted" style="margin:4px 0 0">Plano de manutenção para a dor não voltar.</p></div></div>
+  </div>
+</section>
+
+<!-- ===== Antes e depois ===== -->
+<section class="sec">
+  <span class="tag scr">// RESULTADOS</span>
+  <h2 data-split style="margin-bottom:8px">Antes e depois</h2>
+  <p class="fade muted" style="margin:0 0 24px">Arraste para comparar a postura no início e após 12 semanas.</p>
+  <div class="ba glass fade">
+    <div style="position:absolute;inset:0;background:#0F1A2E;display:flex;align-items:center;justify-content:center">
+      <svg viewBox="0 0 300 260" width="340" height="300"><line x1="150" y1="10" x2="150" y2="250" stroke="#2DD4BF" stroke-dasharray="4 5" opacity=".5"/><circle cx="150" cy="40" r="20" fill="none" stroke="#2DD4BF" stroke-width="3"/><path d="M150 62 C152 100,148 140,150 170" fill="none" stroke="#2DD4BF" stroke-width="4"/><path d="M150 80 L150 135" stroke="#2DD4BF" stroke-width="3"/><path d="M150 170 L145 250 M150 170 L158 250" stroke="#2DD4BF" stroke-width="3"/><text x="220" y="30" fill="#2DD4BF" font-size="13" font-family="Inter">Depois</text><text x="190" y="235" fill="#94A3B8" font-size="11" font-family="Inter">eixo alinhado</text></svg>
+    </div>
+    <div id="baTop" style="position:absolute;inset:0;background:#1A1424;display:flex;align-items:center;justify-content:center;clip-path:inset(0 50% 0 0)">
+      <svg viewBox="0 0 300 260" width="340" height="300"><line x1="150" y1="10" x2="150" y2="250" stroke="#F09595" stroke-dasharray="4 5" opacity=".5"/><circle cx="182" cy="52" r="20" fill="none" stroke="#F09595" stroke-width="3"/><path d="M172 72 C140 95,135 130,152 170" fill="none" stroke="#F09595" stroke-width="4"/><path d="M160 88 L176 140" stroke="#F09595" stroke-width="3"/><path d="M152 170 L140 250 M152 170 L160 250" stroke="#F09595" stroke-width="3"/><circle cx="145" cy="110" r="9" fill="none" stroke="#E24B4A" stroke-width="2"/><text x="30" y="30" fill="#F09595" font-size="13" font-family="Inter">Antes</text><text x="20" y="235" fill="#94A3B8" font-size="11" font-family="Inter">cabeça projetada + cifose</text></svg>
+    </div>
+    <div id="baBar" style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;z-index:3;box-shadow:0 0 14px #fff"><div style="position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:#fff;color:#0B1220;display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-arrows-horizontal" aria-hidden="true"></i></div></div>
+    <input type="range" min="0" max="100" value="50" id="baR" aria-label="Comparar antes e depois">
+  </div>
+</section>
+
+<!-- ===== Depoimentos ===== -->
+<section class="sec">
+  <span class="tag scr">// DEPOIMENTOS</span>
+  <h2 data-split style="margin-bottom:28px">Quem já voltou a se mover</h2>
+  <div class="cyl" id="cyl"><div class="ring" id="ring"></div></div>
+  <div style="display:flex;justify-content:center;gap:12px;margin-top:16px">
+    <button class="b2 mag" id="prv" aria-label="Depoimento anterior"><i class="ti ti-chevron-left"></i></button>
+    <button class="b2 mag" id="nxt" aria-label="Próximo depoimento"><i class="ti ti-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ===== Sobre ===== -->
+<section class="sec">
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
+    <div class="fade" style="display:flex;justify-content:center;perspective:700px">
+      <div class="frame card" style="border-radius:50%"><div style="width:100%;height:100%;border-radius:50%;background:#111A2E;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:60px;color:var(--tq)">RM</div></div>
+    </div>
+    <div>
+      <span class="tag scr">// SOBRE</span>
+      <h2 data-split style="margin-bottom:14px">Dr. Rafael Moura</h2>
+      <p class="fade muted" style="margin:0 0 20px">Fisioterapeuta formado pela USP, mestre em Ciências do Movimento. Atende atletas e pacientes com dor crônica de coluna há mais de 12 anos.</p>
+      <div class="fade" style="display:flex;flex-wrap:wrap;gap:8px"><span class="bdg">CREFITO-3</span><span class="bdg">Mestrado USP</span><span class="bdg">Terapia manual</span><span class="bdg">Pilates clínico</span><span class="bdg">Dry needling</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contato ===== -->
+<section class="sec" id="ctt">
+  <span class="tag scr">// AGENDAMENTO</span>
+  <h2 data-split style="margin-bottom:28px">Agende sua avaliação</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+    <form class="glass fade" id="fm" novalidate style="padding:26px">
+      <input id="fn" placeholder="Seu nome" aria-label="Nome" autocomplete="name"><div class="err" id="en"></div>
+      <input id="ft" placeholder="(11) 99999-0000" aria-label="WhatsApp" inputmode="tel" autocomplete="tel"><div class="err" id="et"></div>
+      <select id="fs" aria-label="Tratamento"><option value="">Qual tratamento?</option><option>Coluna</option><option>Esportiva</option><option>Pós-operatório</option><option>Pilates clínico</option></select><div class="err" id="es"></div>
+      <button class="b1 mag" type="submit" style="width:100%">Solicitar horário</button>
+      <div id="ok" style="font-size:14px;color:var(--tq);margin-top:12px;min-height:20px"></div>
+    </form>
+    <div class="glass fade" style="position:relative;min-height:340px;overflow:hidden">
+      <div id="g3d" style="position:absolute;inset:0"></div>
+      <div class="muted" style="position:absolute;left:18px;top:14px;font-size:13px">Pacientes de todo o Brasil</div>
+      <div style="position:absolute;left:18px;bottom:16px;font-size:14px"><span style="font-weight:500">Clínica Movimento</span><br><span class="muted">Av. Paulista, 1000 · São Paulo</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="text-align:center;font-size:13px;color:var(--mu);padding:28px;border-top:1px solid var(--gb)">© 2026 Dr. Rafael Moura · Fisioterapia · CREFITO-3 000000-F</footer>
+<a class="wa mag" href="https://wa.me/5511999990000" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MOB=innerWidth<760||matchMedia('(pointer:coarse)').matches;
+
+/* ===== Smooth scroll (Lenis) ===== */
+let lenis=null;
+if(!RM&&window.Lenis){lenis=new Lenis({lerp:.09});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0)}
+const goTo=sel=>{const el=document.querySelector(sel);lenis?lenis.scrollTo(el,{offset:-80}):el.scrollIntoView({behavior:'smooth'})};
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>goTo(b.dataset.go)));
+document.querySelectorAll('nav .links a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.getAttribute('href'))}));
+
+/* ===== Navbar translúcida ao rolar ===== */
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('scrolled',scrollY>40);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ===== Reveal palavra por palavra ===== */
+document.querySelectorAll('[data-split]').forEach(h=>{h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w" style="transition-delay:${i*80}ms">${w}</span>`).join(' ')});
+
+/* ===== Texto "scramble" ===== */
+const CH='!<>-_/[]{}=+*^?#ABCXYZ0123456789';
+function scramble(el){const fin=el.dataset.t||(el.dataset.t=el.textContent);let f=0;const tot=fin.length*2;(function u(){el.textContent=fin.split('').map((c,i)=>i<f/2||c===' '?c:CH[Math.random()*CH.length|0]).join('');if(f++<tot)requestAnimationFrame(u)})()}
+
+/* ===== Observador de entrada (reveal, contadores, anéis, scramble) ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('on');io.unobserve(t);
+  if(t.classList.contains('cnt'))count(t);
+  if(t.classList.contains('scr')&&!RM)scramble(t);
+  if(t.classList.contains('pr'))t.style.strokeDashoffset=213.6*(1-t.dataset.p);
+}),{threshold:.3});
+document.querySelectorAll('[data-split],.fade,.cnt,.scr,.pr').forEach(el=>io.observe(el));
+function count(n){const T=+n.dataset.n,t0=performance.now(),d=RM?1:1800;(function u(t){const k=Math.min((t-t0)/d,1);n.textContent=Math.round(T*(1-Math.pow(1-k,3))).toLocaleString('pt-BR');if(k<1)requestAnimationFrame(u)})(t0)}
+
+/* ===== Linha do tempo que se desenha ===== */
+const steps=[...document.querySelectorAll('.step')],tl=document.getElementById('tline');
+const io2=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});const last=steps.filter(s=>s.classList.contains('on')).pop();if(last)tl.style.height=(last.offsetTop+10)+'px'},{threshold:.6});
+steps.forEach(s=>io2.observe(s));
+
+/* ===== Cursor customizado + rastro + ripple ===== */
+const cur=document.getElementById('cur');let cx=0,cy=0,tx=0,ty=0;const trail=[];
+if(!MOB){
+  for(let i=0;i<7;i++){const d=document.createElement('div');d.className='tr';d.style.opacity=(1-i/7)*.6;d.style.width=d.style.height=(6-i*.6)+'px';document.body.appendChild(d);trail.push({el:d,x:0,y:0})}
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;cur.style.opacity=1});
+  document.addEventListener('mouseleave',()=>cur.style.opacity=0);
+  document.addEventListener('mouseover',e=>cur.classList.toggle('big',!!e.target.closest('a,button,input,select,.card,canvas,.hs')));
+  (function cl(){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;cur.style.left=cx+'px';cur.style.top=cy+'px';let px=tx,py=ty;trail.forEach(t=>{t.x+=(px-t.x)*.35;t.y+=(py-t.y)*.35;t.el.style.left=t.x+'px';t.el.style.top=t.y+'px';px=t.x;py=t.y});requestAnimationFrame(cl)})();
+}
+addEventListener('click',e=>{if(RM)return;const r=document.createElement('div');r.className='rip';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);setTimeout(()=>r.remove(),700)});
+
+/* ===== Botões magnéticos ===== */
+if(!RM&&!MOB)document.querySelectorAll('.mag').forEach(m=>{m.addEventListener('mousemove',e=>{const b=m.getBoundingClientRect();m.style.transform=`translate(${(e.clientX-b.left-b.width/2)*.3}px,${(e.clientY-b.top-b.height/2)*.4}px)`});m.addEventListener('mouseleave',()=>m.style.transform='')});
+
+/* ===== Cards com tilt 3D e brilho ===== */
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;c.style.setProperty('--x',x*100+'%');c.style.setProperty('--y',y*100+'%');if(!RM)c.style.transform=`rotateY(${(x-.5)*20}deg) rotateX(${(.5-y)*20}deg) translateZ(14px)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+
+/* ===== Antes e depois ===== */
+const baR=document.getElementById('baR');
+baR.addEventListener('input',()=>{const v=baR.value;document.getElementById('baTop').style.clipPath=`inset(0 ${100-v}% 0 0)`;document.getElementById('baBar').style.left=v+'%'});
+
+/* ===== Carrossel cilíndrico de depoimentos ===== */
+const dep=[['Marina S.','Corredora','Voltei a correr meia maratona sem dor no joelho em 3 meses.'],['Carlos T.','Analista','A dor lombar de 5 anos sumiu. Mudou minha rotina.'],['Juliana P.','Pós-cirurgia LCA','Recuperação impecável, me senti segura em cada etapa.'],['Pedro A.','Jogador de futebol','Retornei aos treinos antes do previsto e mais forte.'],['Ana L.','Professora','O pilates clínico corrigiu minha postura de vez.'],['Roberto M.','Ciclista','Atendimento técnico e humano. Recomendo demais.']];
+const ring=document.getElementById('ring'),N=dep.length,R=240;
+dep.forEach((d,i)=>{const el=document.createElement('div');el.className='glass tc';el.style.transform=`rotateY(${i*360/N}deg) translateZ(${R}px)`;el.innerHTML=`<div style="color:#FAC775;margin-bottom:8px">${'<i class="ti ti-star"></i>'.repeat(5)}</div><p style="margin:0 0 12px">"${d[2]}"</p><div style="font-weight:500">${d[0]}</div><div class="muted" style="font-size:13px">${d[1]}</div>`;ring.appendChild(el)});
+let ang=0,tgt=0,hov=false;const cyl=document.getElementById('cyl');
+cyl.onmouseenter=()=>hov=true;cyl.onmouseleave=()=>hov=false;
+document.getElementById('nxt').onclick=()=>tgt-=360/N;document.getElementById('prv').onclick=()=>tgt+=360/N;
+(function rr(){if(!hov&&!RM)tgt-=.12;ang+=(tgt-ang)*.08;ring.style.transform=`translateZ(-${R}px) rotateY(${ang}deg)`;requestAnimationFrame(rr)})();
+
+/* ===== Formulário com validação ===== */
+const fm=document.getElementById('fm');
+const F=[['fn','en',v=>v.trim().length>=3,'Digite seu nome completo.'],['ft','et',v=>v.replace(/\D/g,'').length>=10,'Informe um WhatsApp válido com DDD.'],['fs','es',v=>!!v,'Escolha um tratamento.']];
+F.forEach(([i,e])=>document.getElementById(i).addEventListener('input',()=>document.getElementById(e).textContent=''));
+fm.addEventListener('submit',ev=>{ev.preventDefault();let ok=true;
+  F.forEach(([i,e,t,m])=>{if(!t(document.getElementById(i).value)){document.getElementById(e).textContent=m;ok=false}});
+  document.getElementById('ok').textContent=ok?'Recebido! Entraremos em contato pelo WhatsApp em breve.':'';
+  /* Aqui você pode integrar com Formspree, EmailJS ou redirecionar para o WhatsApp */
+});
+
+/* ===== Partículas constelação (fogem do mouse) ===== */
+const cv=document.getElementById('stars'),x2=cv.getContext('2d');let ps=[],pm={x:-999,y:-999};
+function initStars(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;ps=Array.from({length:MOB?35:90},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+initStars();
+document.getElementById('hero').addEventListener('mousemove',e=>{const b=cv.getBoundingClientRect();pm.x=e.clientX-b.left;pm.y=e.clientY-b.top});
+(function st(){x2.clearRect(0,0,cv.width,cv.height);
+  ps.forEach(p=>{if(!RM){p.x+=p.vx;p.y+=p.vy}const dx=p.x-pm.x,dy=p.y-pm.y,d=Math.hypot(dx,dy);if(d<100&&d>0){p.x+=dx/d*1.2;p.y+=dy/d*1.2}if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;x2.fillStyle='rgba(56,189,248,.7)';x2.fillRect(p.x,p.y,2,2)});
+  for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const d=Math.hypot(ps[i].x-ps[j].x,ps[i].y-ps[j].y);if(d<110){x2.strokeStyle=`rgba(45,212,191,${.25*(1-d/110)})`;x2.beginPath();x2.moveTo(ps[i].x,ps[i].y);x2.lineTo(ps[j].x,ps[j].y);x2.stroke()}}
+  requestAnimationFrame(st)})();
+
+/* ===== Helper Three.js: cria cena, renderiza só quando visível e redimensiona ===== */
+const scenes=[];
+function mk(el,z){
+  const W=el.clientWidth,H=el.clientHeight,r=new THREE.WebGLRenderer({antialias:!MOB,alpha:true});
+  r.setSize(W,H);r.setPixelRatio(Math.min(devicePixelRatio,MOB?1:2));el.appendChild(r.domElement);
+  const s=new THREE.Scene(),c=new THREE.PerspectiveCamera(40,W/H,.1,100);c.position.z=z;
+  s.add(new THREE.AmbientLight(0xffffff,.45));
+  const a=new THREE.PointLight(0x2DD4BF,1.6,40);a.position.set(4,3,6);s.add(a);
+  const b=new THREE.PointLight(0x38BDF8,1.2,40);b.position.set(-4,-2,5);s.add(b);
+  const o={r,s,c,el,v:true};new IntersectionObserver(e=>o.v=e[0].isIntersecting).observe(el);scenes.push(o);return o}
+addEventListener('resize',()=>{scenes.forEach(o=>{const W=o.el.clientWidth,H=o.el.clientHeight;o.r.setSize(W,H);o.c.aspect=W/H;o.c.updateProjectionMatrix()});initStars()});
+const M=(c,o=1)=>new THREE.MeshStandardMaterial({color:c,metalness:.35,roughness:.3,transparent:o<1,opacity:o});
+const L=(geo,c,o)=>new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:c,transparent:true,opacity:o}));
+
+/* ===== Cena 1: coluna 3D com anéis, hélice e efeito "explosão" ===== */
+const H1=mk(document.getElementById('c3d'),10),g=new THREE.Group();H1.s.add(g);
+const NV=MOB?10:16,parts=[];
+for(let i=0;i<NV;i++){
+  const t=i/(NV-1),y=3.3-t*6.6,x=Math.sin(t*Math.PI*1.7)*.5,sc=.55+t*.55,grp=new THREE.Group();grp.position.set(x,y,0);
+  grp.add(new THREE.Mesh(new THREE.CylinderGeometry(.5*sc,.5*sc,.26,MOB?12:28),M(0x2DD4BF,.85)));
+  grp.add(L(new THREE.CylinderGeometry(.58*sc,.58*sc,.3,10),0x38BDF8,.6));
+  const p=new THREE.Mesh(new THREE.BoxGeometry(.22,.16,.55*sc),M(0x0F6E56));p.position.z=-.55*sc;grp.add(p);
+  [-1,1].forEach(sd=>{const tp=new THREE.Mesh(new THREE.BoxGeometry(.5*sc,.1,.12),M(0x1D9E75));tp.position.set(sd*.55*sc,0,-.25*sc);grp.add(tp)});
+  if(i<NV-1){const d=new THREE.Mesh(new THREE.CylinderGeometry(.36*sc,.36*sc,.13,20),M(0xE1F5EE));d.position.y=-.21;grp.add(d)}
+  g.add(grp);parts.push({grp,by:y,bx:x,ph:Math.random()*6});
+}
+const rings=[];
+[[2.4,0x2DD4BF,1.2],[2.9,0x38BDF8,-.9],[3.4,0xA78BFA,.5]].forEach(([rad,col,tl])=>{
+  const m=new THREE.Mesh(new THREE.TorusGeometry(rad,.012,6,140),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.55}));
+  m.rotation.x=Math.PI/2+tl*.3;m.rotation.y=tl*.4;H1.s.add(m);
+  const orb=new THREE.Mesh(new THREE.SphereGeometry(.07,12,12),new THREE.MeshBasicMaterial({color:col}));m.add(orb);
+  m.userData={orb,rad,sp:.6+Math.random()};rings.push(m)});
+const hp=[],NH=MOB?160:360;
+for(let i=0;i<NH;i++){const t=i/NH,a=t*Math.PI*10+(i%2)*Math.PI;hp.push(Math.cos(a)*1.5,3.6-t*7.2,Math.sin(a)*1.5)}
+const hg=new THREE.BufferGeometry();hg.setAttribute('position',new THREE.Float32BufferAttribute(hp,3));
+const helix=new THREE.Points(hg,new THREE.PointsMaterial({color:0x38BDF8,size:.05,transparent:true,opacity:.8,blending:THREE.AdditiveBlending}));H1.s.add(helix);
+const floaters=[];
+for(let i=0;i<(MOB?3:7);i++){const f=L(new THREE.IcosahedronGeometry(.18+Math.random()*.2,0),i%2?0x2DD4BF:0x38BDF8,.8);f.position.set((Math.random()-.5)*7,(Math.random()-.5)*6,(Math.random()-.5)*3-1);H1.s.add(f);floaters.push(f)}
+let mx=0,my=0,heroR=1;
+addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+new IntersectionObserver(e=>heroR=e[0].intersectionRatio,{threshold:Array.from({length:21},(_,i)=>i/20)}).observe(document.getElementById('hero'));
+
+/* ===== Cena 2: corpo humano 3D interativo ===== */
+const HS={
+  cervical:['Cervical','Dor no pescoço e tensão','Liberação miofascial, mobilização cervical e ergonomia para quem passa horas no computador.',[0,2.15,-.12]],
+  ombro:['Ombro','Tendinite e lesão do manguito','Fortalecimento progressivo, terapia manual e retorno seguro a treinos de força e natação.',[.62,1.92,0]],
+  lombar:['Lombar','Dor lombar e hérnia de disco','Terapia manual, estabilização do core e reeducação postural para aliviar e prevenir crises.',[0,.75,-.42]],
+  joelho:['Joelho','Lesões de LCA e menisco','Reabilitação pós-operatória e conservadora com protocolo baseado em critérios de retorno ao esporte.',[.22,-1.02,.16]],
+  tornozelo:['Tornozelo','Entorses e instabilidade','Treino proprioceptivo, fortalecimento e prevenção de novas entorses.',[-.22,-2.08,.12]]};
+const H2=mk(document.getElementById('b3d'),7.2),body=new THREE.Group();H2.s.add(body);body.position.y=.15;
+const skin=new THREE.MeshStandardMaterial({color:0x38BDF8,transparent:true,opacity:.14,roughness:.4,depthWrite:false});
+function part(geo,x,y,z,rz=0){const m=new THREE.Mesh(geo,skin);m.position.set(x,y,z);m.rotation.z=rz;body.add(m);const e=L(geo,0x38BDF8,.22);e.position.copy(m.position);e.rotation.z=rz;body.add(e)}
+part(new THREE.SphereGeometry(.32,16,12),0,2.58,0);
+part(new THREE.CylinderGeometry(.12,.13,.3,10),0,2.17,0);
+part(new THREE.CylinderGeometry(.56,.42,1.5,14),0,1.27,0);
+part(new THREE.CylinderGeometry(.44,.38,.4,14),0,.33,0);
+[-1,1].forEach(s=>{
+  part(new THREE.CylinderGeometry(.12,.1,.95,10),s*.76,1.52,0,s*.14);
+  part(new THREE.CylinderGeometry(.1,.08,.9,10),s*.88,.62,.02,s*.05);
+  part(new THREE.SphereGeometry(.1,8,8),s*.9,.12,.03);
+  part(new THREE.CylinderGeometry(.18,.13,1.15,10),s*.22,-.45,0);
+  part(new THREE.CylinderGeometry(.13,.09,1.05,10),s*.22,-1.55,0);
+  part(new THREE.BoxGeometry(.18,.1,.38),s*.22,-2.13,.1)});
+for(let i=0;i<14;i++){const v=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.08,10),M(0x2DD4BF));v.position.set(0,2.1-i*.135,-.2-Math.sin(i/13*Math.PI)*.08);body.add(v)}
+const hsM=[];
+Object.entries(HS).forEach(([k,d])=>{
+  const core=new THREE.Mesh(new THREE.SphereGeometry(.09,16,16),new THREE.MeshBasicMaterial({color:0x2DD4BF}));core.position.set(...d[3]);core.userData.k=k;body.add(core);
+  const halo=new THREE.Mesh(new THREE.SphereGeometry(.2,16,16),new THREE.MeshBasicMaterial({color:0x2DD4BF,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false}));core.add(halo);
+  hsM.push({core,halo,k})});
+const bp=[];for(let i=0;i<(MOB?80:200);i++)bp.push((Math.random()-.5)*6,(Math.random()-.5)*6,(Math.random()-.5)*4-1);
+const bg2=new THREE.BufferGeometry();bg2.setAttribute('position',new THREE.Float32BufferAttribute(bp,3));
+const bpts=new THREE.Points(bg2,new THREE.PointsMaterial({color:0x2DD4BF,size:.03,transparent:true,opacity:.5}));H2.s.add(bpts);
+let sel='lombar',rotY=.6,drag=false,lx=0,moved=0;
+const bEl=document.getElementById('b3d'),ray=new THREE.Raycaster(),pv=new THREE.Vector2(),hsb=document.getElementById('hsb');
+Object.entries(HS).forEach(([k,d])=>{const b=document.createElement('button');b.className='hs mag';b.textContent=d[0];b.dataset.k=k;b.onclick=()=>pick(k);hsb.appendChild(b)});
+function pick(k){
+  sel=k;const d=HS[k],inf=document.getElementById('info');
+  inf.style.opacity=0;inf.style.transform='translateY(10px) rotateX(10deg)';
+  setTimeout(()=>{document.getElementById('iT').textContent='// '+d[0].toUpperCase();document.getElementById('iH').textContent=d[1];document.getElementById('iP').textContent=d[2];inf.style.opacity=1;inf.style.transform=''},220);
+  document.querySelectorAll('.hs').forEach(b=>b.classList.toggle('act',b.dataset.k===k));
+  const p=d[3];rotY=p[2]<-.1?Math.PI:(p[0]>.3?-.5:0)}
+pick('lombar');
+bEl.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;moved=0;bEl.setPointerCapture(e.pointerId)});
+bEl.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;moved+=Math.abs(dx);rotY+=dx*.012;body.rotation.y+=dx*.012});
+bEl.addEventListener('pointerup',e=>{drag=false;if(moved>5)return;const b=bEl.getBoundingClientRect();pv.x=(e.clientX-b.left)/b.width*2-1;pv.y=-(e.clientY-b.top)/b.height*2+1;ray.setFromCamera(pv,H2.c);const hit=ray.intersectObjects(hsM.map(h=>h.core));if(hit.length)pick(hit[0].object.userData.k)});
+
+/* ===== Cena 3: globo 3D com rotas de pacientes ===== */
+const H3=mk(document.getElementById('g3d'),5.4),globe=new THREE.Group();H3.s.add(globe);const GR=1.6;
+const ll=(la,lo,r=GR)=>{const p=(90-la)*Math.PI/180,t=(lo+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t))};
+globe.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(GR,24,16)),new THREE.LineBasicMaterial({color:0x38BDF8,transparent:true,opacity:.12})));
+globe.add(new THREE.Mesh(new THREE.SphereGeometry(GR*.98,32,32),new THREE.MeshBasicMaterial({color:0x0B1220,transparent:true,opacity:.7})));
+const gd=[];for(let i=0;i<(MOB?400:900);i++){const v=ll(Math.asin(Math.random()*2-1)*180/Math.PI,Math.random()*360-180,GR*1.005);gd.push(v.x,v.y,v.z)}
+const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(gd,3));
+globe.add(new THREE.Points(gg,new THREE.PointsMaterial({color:0x38BDF8,size:.025,transparent:true,opacity:.6})));
+const SP=ll(-23.55,-46.63);
+const pin=new THREE.Mesh(new THREE.SphereGeometry(.06,16,16),new THREE.MeshBasicMaterial({color:0x2DD4BF}));pin.position.copy(SP);globe.add(pin);
+const pring=new THREE.Mesh(new THREE.RingGeometry(.08,.11,32),new THREE.MeshBasicMaterial({color:0x2DD4BF,transparent:true,side:THREE.DoubleSide}));
+pring.position.copy(SP.clone().multiplyScalar(1.01));pring.lookAt(SP.clone().multiplyScalar(2));globe.add(pring);
+const arcs=[[-22.9,-43.2],[-19.9,-43.9],[-25.4,-49.3],[-15.8,-47.9],[-27.6,-48.5],[-12.97,-38.5],[-3.7,-38.5]].map(([a,o],i)=>{
+  const E=ll(a,o),mid=SP.clone().add(E).multiplyScalar(.5);mid.normalize().multiplyScalar(GR+SP.distanceTo(E)*.6);
+  const geo=new THREE.BufferGeometry().setFromPoints(new THREE.QuadraticBezierCurve3(SP,mid,E).getPoints(50));
+  globe.add(new THREE.Line(geo,new THREE.LineBasicMaterial({color:i%2?0x38BDF8:0x2DD4BF,transparent:true,opacity:.9})));
+  const dot=new THREE.Mesh(new THREE.SphereGeometry(.035,8,8),new THREE.MeshBasicMaterial({color:0x38BDF8}));dot.position.copy(E);globe.add(dot);
+  return {geo,off:i*.4}});
+const baseY=-Math.atan2(SP.x,SP.z),baseX=Math.atan2(SP.y,Math.hypot(SP.x,SP.z));
+
+/* ===== Loop de animação único ===== */
+const clk=new THREE.Clock();
+(function loop(){requestAnimationFrame(loop);const t=clk.getElapsedTime(),sp=RM?0:1;
+  if(H1.v){
+    g.rotation.y+=.006*sp;g.rotation.x+=(my*.45-g.rotation.x)*.05;g.position.x+=(mx*.9-g.position.x)*.05;
+    const ex=(1-heroR)*.9;
+    parts.forEach((p,i)=>{p.grp.position.y=p.by*(1+ex*.6)+Math.sin(t*1.5+i*.5)*.03*sp;p.grp.position.x=p.bx+Math.sin(p.ph)*ex*.8;p.grp.rotation.y=ex*p.ph});
+    rings.forEach(r=>{r.rotation.z+=.004*r.userData.sp*sp;const a=t*r.userData.sp*sp;r.userData.orb.position.set(Math.cos(a)*r.userData.rad,Math.sin(a)*r.userData.rad,0)});
+    helix.rotation.y-=.004*sp;
+    floaters.forEach((f,i)=>{f.rotation.x+=.01*sp;f.rotation.y+=.013*sp;f.position.y+=Math.sin(t+i)*.002*sp});
+    H1.c.position.x+=(mx*1.2-H1.c.position.x)*.04;H1.c.lookAt(0,0,0);H1.r.render(H1.s,H1.c)}
+  if(H2.v){
+    if(!drag)body.rotation.y+=(rotY-body.rotation.y)*.06;
+    body.position.y=.15+Math.sin(t)*.05*sp;
+    hsM.forEach(h=>{const s=h.k===sel?1.6+Math.sin(t*4)*.4*sp:1+Math.sin(t*3+h.core.position.y)*.2*sp;h.halo.scale.setScalar(s);h.core.material.color.set(h.k===sel?0xffffff:0x2DD4BF)});
+    bpts.rotation.y+=.001*sp;H2.r.render(H2.s,H2.c)}
+  if(H3.v){
+    globe.rotation.y=baseY+Math.sin(t*.3)*.35*sp;globe.rotation.x=baseX;
+    pring.scale.setScalar(1+((t*sp)%1.5));pring.material.opacity=1-((t*sp)%1.5)/1.5;
+    arcs.forEach(a=>{const k=RM?1:Math.min(1,Math.max(0,((t*.5+a.off)%3)/1.4));a.geo.setDrawRange(0,Math.floor(k*51))});
+    H3.r.render(H3.s,H3.c)}
+})();
+</script>
+</body>
+</html>

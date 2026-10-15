@@ -1,0 +1,26 @@
+# dependências
+/node_modules
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# produção
+/build
+
+# ambiente
+.env*.local
+.vercel
+.netlify
+
+# Claude Code: configuração local da máquina
+.claude/settings.local.json
+# Link com caminho absoluto criado pelo `npx skills add` (restaure com `npx skills experimental_install`)
+.claude/skills/vercel-react-best-practices
+
+# sistema / logs
+.DS_Store
+Thumbs.db
+npm-debug.log*

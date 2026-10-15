@@ -1,0 +1,701 @@
+/* ===== 1. Navbar fixa ===== */
+.nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px);
+  max-width: var(--max-w);
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition:
+    background 0.4s,
+    border-color 0.4s,
+    backdrop-filter 0.4s;
+}
+
+.nav.is-scrolled {
+  background: rgba(11, 18, 32, 0.6);
+  border-color: var(--gb);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink-strong);
+  text-decoration: none;
+}
+
+.nav__brand svg {
+  color: var(--tq);
+}
+
+.nav__links {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--mu);
+}
+
+.nav__links a {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav__links a:hover {
+  color: var(--tq);
+}
+
+/* ===== 2. Hero ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hero__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 110px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__copy {
+  perspective: 600px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 78px);
+  line-height: 1.05;
+  margin: 20px 0 16px;
+}
+
+.hero__lead {
+  font-size: 18px;
+  max-width: 480px;
+  margin: 0 0 28px;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero__scene {
+  height: min(600px, 72vh);
+}
+
+/* Manchas de aurora */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.33;
+  animation: float 14s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.blob--1 {
+  width: 420px;
+  height: 420px;
+  background: var(--tq);
+  top: -120px;
+  left: -100px;
+}
+
+.blob--2 {
+  width: 380px;
+  height: 380px;
+  background: var(--bl);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -5s;
+}
+
+.blob--3 {
+  width: 300px;
+  height: 300px;
+  background: #7f77dd;
+  top: 35%;
+  left: 42%;
+  animation-delay: -9s;
+  opacity: 0.22;
+}
+
+@keyframes float {
+  to {
+    transform: translate(80px, 50px) scale(1.25);
+  }
+}
+
+.hero__stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contêineres das cenas 3D */
+.scene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ===== 3. Marquee inclinada ===== */
+.marquee {
+  transform: skewY(-3deg);
+  background: var(--tq);
+  color: var(--on-tq);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 20px 0;
+}
+
+.marquee__track {
+  display: inline-block;
+  animation: marquee 26s linear infinite;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== 4. Números ===== */
+.stats {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.stats__grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1.8s var(--ease-out);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+}
+
+/* ===== 5. Especialidades ===== */
+.specialties__grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  perspective: 900px;
+}
+
+.specialty h3 {
+  font-size: 20px;
+  margin: 14px 0 6px;
+}
+
+/* ===== 6. Onde dói? (corpo 3D) ===== */
+.pain__grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  gap: 24px;
+}
+
+.pain__scene {
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  /* Arrastar na horizontal gira o corpo; na vertical a página continua rolando */
+  touch-action: pan-y;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chip {
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--gb);
+  background: transparent;
+  color: var(--mu);
+  transition: all 0.2s;
+}
+
+.chip:hover {
+  color: var(--ink);
+  border-color: rgba(45, 212, 191, 0.5);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--tq);
+  color: var(--on-tq);
+  background: var(--tq);
+}
+
+.pain__info {
+  padding: 24px;
+  transition:
+    transform 0.4s,
+    opacity 0.4s;
+}
+
+.pain__info.is-switching {
+  opacity: 0;
+  transform: translateY(10px) rotateX(10deg);
+}
+
+.pain__info h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.pain__info p {
+  margin: 0 0 18px;
+}
+
+/* ===== 7. Método (linha do tempo) ===== */
+.timeline {
+  position: relative;
+  max-width: 640px;
+}
+
+.timeline__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__track,
+.timeline__progress {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 2px;
+}
+
+.timeline__track {
+  bottom: 44px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.timeline__progress {
+  height: 0;
+  background: linear-gradient(var(--tq), var(--bl));
+  box-shadow: 0 0 12px var(--tq);
+  transition: height 0.8s ease;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 0 0 36px;
+  opacity: 0.3;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
+}
+
+.step.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.step h3 {
+  font-size: 21px;
+}
+
+.step p {
+  margin: 4px 0 0;
+}
+
+.step__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--tq);
+  background: var(--bg);
+  flex-shrink: 0;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.step.is-in .step__dot {
+  background: var(--tq);
+  box-shadow:
+    0 0 0 6px rgba(45, 212, 191, 0.15),
+    0 0 18px var(--tq);
+}
+
+/* ===== 8. Antes e depois ===== */
+.compare {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Foco do teclado no range invisível aparece no contêiner */
+.compare:has(input:focus-visible) {
+  outline: 2px solid var(--tq);
+  outline-offset: 3px;
+}
+
+.compare__pane {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare__pane svg {
+  max-width: 90%;
+  height: auto;
+}
+
+.compare__pane text {
+  font-family: var(--font-body);
+}
+
+.compare__pane--after {
+  background: #0f1a2e;
+}
+
+.compare__pane--before {
+  background: #1a1424;
+}
+
+.compare__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  z-index: 3;
+  box-shadow: 0 0 14px #fff;
+  pointer-events: none;
+}
+
+.compare__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+  cursor: ew-resize;
+}
+
+/* ===== 9. Depoimentos em cilindro 3D ===== */
+.cylinder {
+  position: relative;
+  height: 240px;
+  perspective: 1200px;
+  /* Os cards laterais projetados em 3D não podem alargar a página no mobile */
+  overflow-x: clip;
+}
+
+.cylinder__ring {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 250px;
+  height: 200px;
+  margin: 0 0 0 -125px;
+  padding: 0;
+  list-style: none;
+  transform-style: preserve-3d;
+}
+
+.testimonial {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  font-size: 14px;
+  background: rgba(17, 26, 46, 0.92);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.testimonial blockquote {
+  margin: 0 0 12px;
+}
+
+.testimonial__stars {
+  display: flex;
+  gap: 2px;
+  color: var(--star);
+  margin-bottom: 8px;
+}
+
+.testimonial__name {
+  font-weight: 500;
+}
+
+.testimonial__role {
+  font-size: 13px;
+}
+
+.cylinder__controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ===== 10. Sobre ===== */
+.about__grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+.about__avatar-wrap {
+  display: flex;
+  justify-content: center;
+  perspective: 700px;
+  /*
+   * A moldura gira e o miolo gira ao contrário. Para o overflow, o Chrome
+   * usa a caixa da caixa girada (~420px), o que alargava a página no mobile
+   * mesmo sem nada visível passar da borda.
+   */
+  overflow-x: clip;
+}
+
+/* Moldura conic-gradient girando */
+.avatar-frame {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  padding: 5px;
+  background: conic-gradient(var(--tq), var(--bl), transparent, var(--tq));
+  animation: spin 6s linear infinite;
+}
+
+.avatar-frame > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 60px;
+  color: var(--tq);
+  animation: spin 6s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about h2 {
+  margin-bottom: 14px;
+}
+
+.about__bio {
+  margin: 0 0 20px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ===== 11. Contato ===== */
+.contact__grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.contact__form {
+  padding: 26px;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 13px;
+  min-height: 18px;
+  margin: 3px 0 8px;
+}
+
+.form-status {
+  font-size: 14px;
+  color: var(--tq);
+  margin-top: 12px;
+  min-height: 20px;
+}
+
+.form-status a {
+  font-weight: 500;
+}
+
+.contact__globe {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+}
+
+.contact__globe-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.contact__globe-caption {
+  position: absolute;
+  left: 18px;
+  top: 14px;
+  font-size: 13px;
+}
+
+.contact__address {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.contact__address strong {
+  font-weight: 500;
+}
+
+/* ===== 12. WhatsApp flutuante e rodapé ===== */
+.whatsapp-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--wa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--mu);
+  padding: 28px 28px 100px;
+  border-top: 1px solid var(--gb);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+  }
+
+  .hero__scene {
+    height: 380px;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .sec {
+    padding: 80px 20px;
+  }
+
+  .pain__scene {
+    height: 400px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pain__grid,
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatsapp-fab {
+    right: 16px;
+    bottom: 16px;
+  }
+}
