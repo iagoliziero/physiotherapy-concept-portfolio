@@ -87,21 +87,8 @@ export function initParticles(canvas: HTMLCanvasElement, host: HTMLElement, env:
   host.addEventListener("mousemove", onMouse);
   host.addEventListener("mouseleave", onLeave);
 
-  const resizeObserver = new ResizeObserver(() => {
-    setup();
-    if (env.reducedMotion) draw(0);
-  });
+  const resizeObserver = new ResizeObserver(setup);
   resizeObserver.observe(canvas);
-
-  // Movimento reduzido: desenha uma constelação estática, sem loop contínuo
-  if (env.reducedMotion) {
-    draw(0);
-    return () => {
-      resizeObserver.disconnect();
-      host.removeEventListener("mousemove", onMouse);
-      host.removeEventListener("mouseleave", onLeave);
-    };
-  }
 
   const visibility = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;

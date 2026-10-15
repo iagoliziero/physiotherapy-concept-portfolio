@@ -49,7 +49,6 @@ function facingAngle([x, , z]: [number, number, number]) {
 export function createBodyScene(el: HTMLElement, env: DeviceEnv, options: BodySceneOptions): BodySceneHandle {
   const stage = createStage(el, env, 7.6);
   const { scene, camera } = stage;
-  const motion = env.reducedMotion ? 0 : 1;
 
   // O corpo vai de y≈-2,2 (pés) a y≈2,9 (cabeça): desloca para centralizar no quadro
   const baseY = -0.35;
@@ -180,18 +179,18 @@ export function createBodyScene(el: HTMLElement, env: DeviceEnv, options: BodySc
 
   stage.start((time, delta) => {
     if (!dragging) body.rotation.y += (targetRotation - body.rotation.y) * damp(0.06, delta);
-    body.position.y = baseY + Math.sin(time) * 0.05 * motion;
+    body.position.y = baseY + Math.sin(time) * 0.05;
 
     markers.forEach((m) => {
       const active = m.key === selected;
       const scale = active
-        ? 1.6 + Math.sin(time * 4) * 0.4 * motion
-        : 1 + Math.sin(time * 3 + m.core.position.y) * 0.2 * motion;
+        ? 1.6 + Math.sin(time * 4) * 0.4
+        : 1 + Math.sin(time * 3 + m.core.position.y) * 0.2;
       m.halo.scale.setScalar(scale);
       m.core.material.color.set(active ? 0xffffff : 0x2dd4bf);
     });
 
-    dustPoints.rotation.y += 0.001 * delta * 60 * motion;
+    dustPoints.rotation.y += 0.001 * delta * 60;
   });
 
   return {

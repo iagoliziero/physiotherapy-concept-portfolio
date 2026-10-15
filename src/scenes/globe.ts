@@ -41,7 +41,6 @@ function latLonToVector(lat: number, lon: number, radius = RADIUS) {
 export function createGlobeScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   const stage = createStage(el, env, 5.4);
   const { scene } = stage;
-  const motion = env.reducedMotion ? 0 : 1;
 
   const globe = new Group();
   scene.add(globe);
@@ -106,15 +105,14 @@ export function createGlobeScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   const baseX = Math.atan2(origin.y, Math.hypot(origin.x, origin.z));
 
   stage.start((time) => {
-    const t = time * motion;
-    globe.rotation.y = baseY + Math.sin(time * 0.3) * 0.35 * motion;
+    globe.rotation.y = baseY + Math.sin(time * 0.3) * 0.35;
     globe.rotation.x = baseX;
 
-    pulse.scale.setScalar(1 + (t % 1.5));
-    pulse.material.opacity = 1 - (t % 1.5) / 1.5;
+    pulse.scale.setScalar(1 + (time % 1.5));
+    pulse.material.opacity = 1 - (time % 1.5) / 1.5;
 
     arcs.forEach((arc) => {
-      const k = env.reducedMotion ? 1 : Math.min(1, Math.max(0, ((time * 0.5 + arc.offset) % 3) / 1.4));
+      const k = Math.min(1, Math.max(0, ((time * 0.5 + arc.offset) % 3) / 1.4));
       arc.geometry.setDrawRange(0, Math.floor(k * (ARC_POINTS + 1)));
     });
   });

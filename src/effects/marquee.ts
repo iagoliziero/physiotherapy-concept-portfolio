@@ -8,12 +8,13 @@ const SCROLL_BOOST = 0.3;
 const MAX_BOOST = 900;
 
 /**
- * Faixa inclinada em loop infinito, movida pelo loop único. Anda sozinha e
- * acelera no sentido da rolagem (rolar para cima chega a inverter o sentido),
- * voltando ao ritmo normal quando a página para. Só anima enquanto está na tela.
+ * Faixa inclinada em loop infinito, movida pelo loop único. Anda sozinha e,
+ * com `followScroll`, acelera no sentido da rolagem (rolar para cima chega a
+ * inverter o sentido), voltando ao ritmo normal quando a página para.
+ * Só anima enquanto está na tela.
  * O conteúdo vem repetido em <span>s iguais: uma volta é a distância entre dois.
  */
-export function initMarquee(): () => void {
+export function initMarquee({ followScroll }: { followScroll: boolean }): () => void {
   const track = document.querySelector<HTMLElement>("[data-marquee]");
   const [first, second] = track ? Array.from(track.children) : [];
   if (!track || !first || !second) return () => {};
@@ -49,7 +50,7 @@ export function initMarquee(): () => void {
     lastY = scrollY;
     if (!visible || period <= 0) return;
 
-    const boost = Math.max(-MAX_BOOST, Math.min(MAX_BOOST, velocity * SCROLL_BOOST));
+    const boost = followScroll ? Math.max(-MAX_BOOST, Math.min(MAX_BOOST, velocity * SCROLL_BOOST)) : 0;
     x = (x + (period / LOOP_SECONDS + boost) * delta) % period;
     if (x < 0) x += period;
     track.style.transform = `translate3d(${-x}px, 0, 0)`;

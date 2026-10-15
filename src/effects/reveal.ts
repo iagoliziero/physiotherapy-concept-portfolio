@@ -12,7 +12,7 @@ const MAX_STEPS = 5;
  * palavra por palavra, blocos que sobem e títulos com máscara), dispara os
  * contadores e o preenchimento dos anéis SVG.
  */
-export function initReveal({ reducedMotion }: { reducedMotion: boolean }): () => void {
+export function initReveal(): () => void {
   const stoppers: Array<() => void> = [];
 
   const observer = new IntersectionObserver(
@@ -31,7 +31,7 @@ export function initReveal({ reducedMotion }: { reducedMotion: boolean }): () =>
         }
         el.classList.add("is-in");
 
-        if (el.dataset.count !== undefined) stoppers.push(countUp(el, reducedMotion ? 0 : 1800));
+        if (el.dataset.count !== undefined) stoppers.push(countUp(el, 1800));
         if (el.dataset.progress !== undefined) {
           el.style.strokeDashoffset = String(RING_LENGTH * (1 - Number(el.dataset.progress)));
         }

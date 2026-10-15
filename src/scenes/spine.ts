@@ -49,7 +49,6 @@ interface OrbitRing {
 export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   const stage = createStage(el, env, BASE_Z);
   const { scene, camera } = stage;
-  const motion = env.reducedMotion ? 0 : 1;
 
   // ----- Coluna: vértebras = cilindro + wireframe + processos + disco -----
   const spine = new Group();
@@ -169,7 +168,7 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
   window.addEventListener("resize", measureExit);
 
   stage.start((time, delta) => {
-    const step = delta * 60 * motion;
+    const step = delta * 60;
     const ease = damp(0.05, delta);
 
     spine.rotation.y += 0.006 * step;
@@ -180,14 +179,14 @@ export function createSpineScene(el: HTMLElement, env: DeviceEnv): SceneHandle {
     exitAmount += (exitTarget - exitAmount) * damp(0.15, delta);
     const explode = env.reducedMotion ? 0 : exitAmount * 0.9;
     vertebrae.forEach((v, i) => {
-      v.group.position.y = v.baseY * (1 + explode * 0.6) + Math.sin(time * 1.5 + i * 0.5) * 0.03 * motion;
+      v.group.position.y = v.baseY * (1 + explode * 0.6) + Math.sin(time * 1.5 + i * 0.5) * 0.03;
       v.group.position.x = v.baseX + Math.sin(v.phase) * explode * 0.8;
       v.group.rotation.y = explode * v.phase;
     });
 
     rings.forEach((r) => {
       r.mesh.rotation.z += 0.004 * r.speed * step;
-      const a = time * r.speed * motion;
+      const a = time * r.speed;
       r.orb.position.set(Math.cos(a) * r.radius, Math.sin(a) * r.radius, 0);
     });
 

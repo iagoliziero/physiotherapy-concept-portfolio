@@ -55,10 +55,12 @@ Decisões principais:
 - **HTML no servidor, efeitos no cliente:** as seções são Server Components; os efeitos
   globais atuam sobre classes/atributos (`.reveal`, `.mag`, `.card`, `data-split`, `data-count`…).
 - **Mobile/touch:** menos partículas e vértebras, `pixelRatio` 1, sem antialias e cursor nativo.
-- **`prefers-reduced-motion`:** desliga animações contínuas, Lenis, cursor, explosão da
-  coluna, faixa e parallax do hero, e mostra todo o conteúdo. No Windows, essa preferência
-  vem de *Configurações → Acessibilidade → Efeitos visuais → Efeitos de animação*: com ela
-  desligada, o navegador pede movimento reduzido e o site aparece sem animações.
+- **`prefers-reduced-motion`: reduz, sem congelar.** No Windows essa preferência vem de
+  *Efeitos de animação*, que o modo de melhor desempenho também desliga, então muita gente a
+  recebe sem pedir. Por isso a página continua viva (coluna 3D girando, entradas, faixa,
+  aurora) e só saem os movimentos grandes ligados à rolagem: Lenis, parallax do hero,
+  explosão da coluna e faixa acelerando, além de cursor, ripple e magnetismo. As entradas
+  sobem um trajeto menor.
 - **Sem JavaScript**, o conteúdo continua visível (fallback em `<noscript>`).
 
 ## Antes de publicar

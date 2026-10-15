@@ -189,25 +189,20 @@ html.has-custom-cursor * {
   cursor: none !important;
 }
 
-/* ===== Movimento reduzido: desliga animações contínuas e mostra o conteúdo ===== */
+/*
+ * ===== Movimento reduzido: reduz, sem congelar =====
+ * No Windows essa preferência vem de "Efeitos de animação", que o modo de
+ * melhor desempenho também desliga, então muita gente a recebe sem pedir.
+ * A página continua viva: as entradas só encurtam o trajeto, e a rolagem
+ * suave, o parallax do hero, a explosão da coluna e a aceleração da faixa
+ * ficam de fora (ver GlobalEffects e scenes/spine.ts).
+ */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
+  .word {
+    transform: translateY(8px);
   }
 
-  .word,
-  .reveal,
-  .step {
-    opacity: 1;
-    transform: none;
-    translate: none;
-    filter: none;
-  }
-
-  .reveal-mask > span {
-    translate: none;
+  .reveal {
+    translate: 0 16px;
   }
 }

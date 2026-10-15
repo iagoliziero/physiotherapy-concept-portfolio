@@ -21,11 +21,18 @@ import { getDeviceEnv } from "@/lib/env";
 export function GlobalEffects() {
   useEffect(() => {
     const env = getDeviceEnv();
-    // A linha de progresso só acompanha a rolagem do próprio usuário: fica mesmo com movimento reduzido
-    const cleanups = [initReveal(env), initTimeline(), initTilt(env), initScrollProgress()];
+    const cleanups = [
+      initReveal(),
+      initTimeline(),
+      initTilt(env),
+      initScrollProgress(),
+      initMarquee({ followScroll: !env.reducedMotion }),
+    ];
 
+    // Movimento reduzido: a página continua viva, só sem os movimentos grandes
+    // ligados à rolagem (inércia, parallax do hero, faixa acelerando)
     if (!env.reducedMotion) {
-      cleanups.push(initSmoothScroll(), initRipple(), initMarquee(), initHeroParallax());
+      cleanups.push(initSmoothScroll(), initRipple(), initHeroParallax());
       // Cursor customizado e magnetismo só com mouse/trackpad
       if (env.finePointer) cleanups.push(initCursor(), initMagnetic());
     }
